@@ -8,7 +8,7 @@ const reducers = {
 const rootReducer = combineReducers(reducers)
 
 const store = configureStore({
-    reducer:reducers,
+    reducer: reducers,
 })
 
 export default store

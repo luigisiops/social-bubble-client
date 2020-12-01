@@ -1,7 +1,8 @@
 import React, {useState} from "react"
 import "./login.css"
+import { connect } from 'react-redux'
 
-export const Login = () => {
+export const Login = (props) => {
     return(
         <div className = "login-container">
             <div className = "logo">Social Bubble</div>
@@ -27,4 +28,10 @@ export const Login = () => {
     )
 }
 
-export default Login
+const mapStateToProps = state => {
+    return {
+        
+    }
+}
+
+export default connect(mapStateToProps)(Login)
