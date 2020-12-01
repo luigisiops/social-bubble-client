@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import "./login.css"
 
-const Login = () => {
+export const Login = () => {
     return(
         <div className = "login-container">
             <div className = "logo">Social Bubble</div>
