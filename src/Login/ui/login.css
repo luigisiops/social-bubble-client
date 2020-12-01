@@ -1,0 +1,44 @@
+.login-container{
+    color: white;
+    background-color: rgb(81, 163, 211);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo{
+    margin-top: 40%;
+    margin-bottom: 8%;
+    font-size: 40px;
+    font-weight: 700;
+}
+.login-form{
+    display: inherit;
+    flex-direction: inherit;
+    justify-content: center;
+    align-items: inherit;
+    width: 30%;
+}
+.username-container, .password-container {
+    margin-bottom: 20px;
+}
+
+.username-input, .password-input{
+    width: 175px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+}
+.signIn-button{
+    width: 5em;
+    height: 2em;
+    display: inherit;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: transparent;
+    border: 1px white solid;
+}
+

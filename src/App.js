@@ -1,8 +1,11 @@
 import './App.css';
+import Login from './Login/ui/login'
 
 function App() {
   return (
-    <div>main page</div>
+    <div>
+      <Login/>
+    </div>
   );
 }
 
