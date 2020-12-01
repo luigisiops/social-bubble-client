@@ -3,6 +3,8 @@ import "./login.css"
 import { connect } from 'react-redux'
 
 export const Login = (props) => {
+
+    
     return(
         <div className = "login-container">
             <div className = "logo">Social Bubble</div>
@@ -30,7 +32,7 @@ export const Login = (props) => {
 
 const mapStateToProps = state => {
     return {
-        
+        users: state.users
     }
 }
 
