@@ -111,7 +111,7 @@
         -webkit-transform: perspective(1px) translateZ(0);
         transform: perspective(1px) translateZ(0);
         box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-        background: rgba(252, 252, 252, 0.3);
+        background: rgba(216, 216, 216, 0.3);
         overflow: hidden;
         -webkit-transition-duration: 0.3s;
         transition-duration: 0.3s;
