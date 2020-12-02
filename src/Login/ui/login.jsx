@@ -1,7 +1,12 @@
 import React, {useState} from "react"
-import { NavLink, Redirect } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import { connect } from "react-redux"
 import "./login.css"
+
+import {UserLogin} from '../use-cases/user-login'
+import {
+    UserClient,
+} from "../framework/clients"
 
 export const Login = () => {
     const [fields, setFields] = useState({})
@@ -14,6 +19,7 @@ export const Login = () => {
         })
     console.log(fields)
     
+
     return(
         <div className = "login-container">
             <div className = "logo">Social Bubble</div>
@@ -46,6 +52,11 @@ export const Login = () => {
     )
 }
 
+const mapStateToProps = (state, {users}) => ({
+})
+
+const mapDispatchToProps = (dispatch) => ({
+})
 
 
-export default Login
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
