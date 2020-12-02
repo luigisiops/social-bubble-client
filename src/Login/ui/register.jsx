@@ -27,6 +27,15 @@ export const Register = () => {
                         onChange={setField}>
                     </input>
                 </div>
+                <div className="username-container">
+                    <label>Email</label>
+                    <input className="username-input"
+                        name="email"
+                        type="email"
+                        value={fields.email}
+                        onChange={setField}>
+                    </input>
+                </div>
 
                 <div className="username-container">
                     <label>Username</label>
@@ -34,15 +43,6 @@ export const Register = () => {
                         name="lastName"
                         type="text"
                         value={fields.lastName}
-                        onChange={setField}>
-                    </input>
-                </div>
-                <div className="username-container">
-                    <label>Username</label>
-                    <input className="username-input"
-                        name="email"
-                        type="email"
-                        value={fields.email}
                         onChange={setField}>
                     </input>
                 </div>
@@ -57,7 +57,7 @@ export const Register = () => {
                     </input>
                 </div>
 
-                <button className="signIn-button">Sign In</button>
+                <button className="signIn-button">Register</button>
             </div>
             <div className="signup-link">
                 <p>Already a user? <NavLink to="/login/">Login</NavLink></p>
