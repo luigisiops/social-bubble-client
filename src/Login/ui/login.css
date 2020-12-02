@@ -8,6 +8,16 @@
         flex-direction: column;
         align-items: center;
     }
+
+    .register-container{
+        color: white;
+        background-color: rgb(81, 163, 211);
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     
     .logo{
         margin-top: 40%;
@@ -59,6 +69,16 @@
 
 @media (min-width: 426px) {
     .login-container{
+        color: white;
+        background-color: rgb(81, 163, 211);
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .register-container{
         color: white;
         background-color: rgb(81, 163, 211);
         width: 100vw;

@@ -11,6 +11,8 @@ import {
 } from "react-router-dom"
 
 import { Login } from './login/ui/login'
+import { Register } from './login/ui/register'
+
 
 const App = () => {
   return (
@@ -18,6 +20,7 @@ const App = () => {
       <Router>
         <Switch>
           <Route exact path = "/login" component={Login} />
+          <Route exact path = "/register" component={Register} />
         </Switch>
       </Router>
     </Provider>
