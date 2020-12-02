@@ -13,6 +13,7 @@ import {
 import { Login } from './login/ui/login'
 import { Register } from './login/ui/register'
 import BubbleBuilder from './login/ui/bubble-builder/BubbleBuilder';
+import Dashboard from './login/ui/Dashboard/Dashboard';
 
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
           <Route exact path = "/login" component={Login} />
           <Route exact path = "/register" component={Register} />
           <Route exact path = '/bubble-builder' component={BubbleBuilder} />
+          <Route exact path = '/dashboard' component={Dashboard} />
         </Switch>
       </Router>
     </Provider>
