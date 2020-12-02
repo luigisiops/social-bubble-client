@@ -21,7 +21,6 @@ const App = () => {
         <Switch>
           <Route exact path = "/login" component={Login} />
           <Route exact path = "/register" component={Register} />
-
         </Switch>
       </Router>
     </Provider>

@@ -1,16 +1,18 @@
-import { createReducer } from "@reduxjs/toolkit"
-import {
-    onUserLogin,
-} from "./actions"
+import { bindActionCreators } from "redux"
 
-export const login = createReducer(
-    {
-        byId: {}
-    },
-    {
-        [createOrUpdatePlans.type]: (state, { payload: user }) => {
-            console.log(user)
-            const users = user
-            return {...state, users}
+const initialState = {
+    isAuthenticated: false
+}
+
+const reducer = (state = initialState =>{
+
+    if(bindActionCreators.type == 'ON_LOGIN') {
+        return {
+            ...state,
+            isAuthenticted: true
         }
-    })
+    }
+    return state
+})
+
+export default reducer
