@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { NavLink } from "react-router-dom"
 import { connect } from "react-redux"
 import "./login.css"
@@ -9,43 +9,56 @@ import Axios from "axios";
 export const Login = (props) => {
     const [fields, setFields] = useState({})
 
-    const [loginStatus, setloginStatus] = useState({})
+    const [loginStatus, setLoginStatus] = useState(true);
 
     Axios.defaults.withCredentials = true;
+
+    const login = async (e) => {
+        e.preventDefault()
+        const response = await Axios.post("http://localhost:8080/auth/login", {
+            email: fields.email,
+            password: fields.password
+        })
+        console.log(response);
+        if (!response.data.auth) {
+            setLoginStatus(false);
+        } else {
+            console.log(response.data);
+            localStorage.setItem("token", response.data.token);
+            setLoginStatus(true);
+        }
+    };
+
+    useEffect(async () => {
+        const response = await Axios.get("http://localhost:8080/auth/login")
+        if (response.data.loggedIn == true) {
+            setLoginStatus(response.data.user[0].email);
+        }
+    }, []);
+
+    const userAuthenticated = async () => {
+        const response = await Axios.get("http://localhost:8080/isUserAuth", {
+            headers: {
+                "x-access-token": localStorage.getItem("token"),
+            },
+        })
+            console.log(response);
+    };
 
     const setField = (evt) =>
         setFields({
             ...fields,
             [evt.target.name]: evt.target.value
         })
-        const performLoginRequest = (fields) => {
-            console.log(fields)
-            fetch('http://localhost:8080/login',{
-              method: 'POST', 
-              headers: {
-                'Content-Type': 'application/json'
-              }, 
-              body: JSON.stringify(fields)
-            }
-            ).then(response => response.json())
-            .then(result => {
-              if(result.success) {
-                // logged in successfully 
-                // dispatch an action and update the isAuthenticated to true 
-                props.onLogin() 
-              }
-            })
-        
-          }
-    console.log(fields)
+        console.log(fields)
 
 
     return (
         <div className="login-container">
             <div className="logo">Social Bubble</div>
-            <div className="login-form">
+            <form className="login-form" onSubmit={login}>
                 <div className="username-container">
-                    <label>Username</label>
+                    <label>Email</label>
                     <input className="username-input"
                         name="email"
                         type="email"
@@ -63,8 +76,12 @@ export const Login = (props) => {
                     </input>
                 </div>
 
-                <button className="signIn-button" onClick = {() => performLoginRequest()}>Sign In</button>
-            </div>
+                <button className="signIn-button" type = "submit">Sign In</button>
+            </form>
+            {loginStatus && (
+                <button className="signIn-button" onClick={userAuthenticated}>check if authenticated</button>
+            )}
+            <h1>{loginStatus}</h1>
             <div className="signup-link">
                 <p>Not a user? <NavLink to="/register/">Register</NavLink></p>
             </div>
@@ -75,7 +92,7 @@ export const Login = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onLogin: () => dispatch({type: 'ON_LOGIN'})
+        onLogin: () => dispatch({ type: 'ON_LOGIN' })
     }
 }
 
