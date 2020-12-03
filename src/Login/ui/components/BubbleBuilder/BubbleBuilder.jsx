@@ -14,7 +14,11 @@ function BubbleBuilder( props ) {
 
     const [bubble, setBubble] = useState({
         status: 'Green',
-        rules: []})
+        rules: [],
+        members: []
+    })
+    const [newRule, setNewRule] = useState("")
+    const [newMember, setNewMember] = useState("")
 
     const handleBubbleChange = e => {
         setBubble({
@@ -30,8 +34,6 @@ function BubbleBuilder( props ) {
         })
     }
 
-    const [newRule, setNewRule] = useState("")
-
     const handleNewRuleChange = e => {
         setNewRule(e.target.value)
     }
@@ -44,25 +46,46 @@ function BubbleBuilder( props ) {
             ...bubble,
             rules: ruleArray
         })
-
         setNewRule('')
-
     }
+
+    const handleNewMemberChange = e => {
+        setNewMember(e.target.value)
+    }
+
+    const handleAddMember = () => {
+        let memberArray = bubble.members
+        memberArray.push(newMember)
+
+        setBubble({
+            ...bubble,
+            members: memberArray
+        })
+        setNewMember('')
+    }
+
+   
+
+
 
     return (
         <div className='bubble-builder-container'>
 
             <Navbar />
-            
+
             <h1>BUBBLE BUILDER</h1>
 
             <input onChange={handleBubbleChange} name="bubble-name" type="text" placeholder="Bubble Name"></input>
 
-            <input type="text" name='rules' placeholder='Bubble Rule...' value = {newRule} onChange = {handleNewRuleChange}></input>
+            <input type="text" name='rules' placeholder='Bubble Rule...' value={newRule} onChange={handleNewRuleChange}></input>
             <button onClick={handleAddBubbleRule}>Add Rule</button>
 
-            
+            <input type="text" name="members" placeholder="Enter Member Email..." value={newMember} onChange={handleNewMemberChange}></input>
+            <button onClick={handleAddMember}>Add Bubble Member</button>
 
+            <button onClick={props.createBubble}>Create Bubble</button>
+
+            
 
         </div>
     )
@@ -74,6 +97,12 @@ const mapStateToProps = state => {
     })
 }
 
+const mapDispatchTopProps = dispatch => {
+    return {
+        createBubble: (user) => dispatch({ type: 'CREATE_BUBBLE', payload: user})
+    }
+}
 
 
-export default connect(mapStateToProps)(BubbleBuilder)
+
+export default connect(mapStateToProps,mapDispatchTopProps)(BubbleBuilder)
