@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { NavLink } from "react-router-dom"
 import { connect } from "react-redux"
 import "./BubbleBuilder.css"
+import Navbar from "../Navbar/Navbar"
 
 
 
@@ -50,6 +51,8 @@ function BubbleBuilder( props ) {
 
     return (
         <div className='bubble-builder-container'>
+
+            <Navbar />
             
             <h1>BUBBLE BUILDER</h1>
 
