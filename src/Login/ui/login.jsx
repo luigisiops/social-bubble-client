@@ -4,26 +4,30 @@ import { connect } from "react-redux"
 import "./login.css"
 
 import { UserLogin } from '../use-cases/user-login'
-
+import Axios from "axios";
 
 export const Login = (props) => {
     const [fields, setFields] = useState({})
 
     const [loginStatus, setloginStatus] = useState({})
+
+    Axios.defaults.withCredentials = true;
+
     const setField = (evt) =>
         setFields({
             ...fields,
             [evt.target.name]: evt.target.value
         })
         const performLoginRequest = (fields) => {
-
+            console.log(fields)
             fetch('http://localhost:8080/login',{
               method: 'POST', 
               headers: {
                 'Content-Type': 'application/json'
               }, 
               body: JSON.stringify(fields)
-            }).then(response => response.json())
+            }
+            ).then(response => response.json())
             .then(result => {
               if(result.success) {
                 // logged in successfully 
