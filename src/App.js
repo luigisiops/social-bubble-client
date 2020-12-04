@@ -17,11 +17,6 @@ import Bubbles from './login/ui/components/Bubbles/Bubbles'
 import BubbleBuilder from './login/ui/components/BubbleBuilder/BubbleBuilder';
 
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> adb3f46553d3bb863303483fe770238a20f4d783
 const App = () => {
   return (
     <Provider store = {store}>
