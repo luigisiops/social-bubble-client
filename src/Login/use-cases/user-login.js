@@ -1,22 +1,24 @@
-import {onUserLogin} from "../framework/actions"
+import {onUserLogin} from '../framework/actions'
 
-export const UserLogin = (apiUserLogin, dispatch) => async({
-    user
+export const SendLogin = (dispatch) => async({
+    fields
 }) => {
-    const {username, password} = user
+    console.log(fields)
+    
+    const user = {email: fields.email, password: fields.password}
 
+    /*const response = await fetch('http://localhost:8080/login',{
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json'
+        }, 
+        body: JSON.stringify(fields)
+      })
+      console.log(response)*/
 
-const userInfo = {username: user.firstName, lastName: user.lastName}
+    //return dispatch(onUserLogin(response.toJSON()))
 
-const response = await apiUserLogin(userInfo)
-console.log(response)
-
-if(response.error){
-    return null
+    return dispatch(onUserLogin(user))
 }
 
-return dispatch(onUserLogin(response.toJSON()))
-
-}
-
-export default UserLogin
+export default SendLogin
