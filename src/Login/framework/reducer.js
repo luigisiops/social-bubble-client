@@ -32,9 +32,8 @@ export const bubble = createReducer(
         byId: {}
     },
     {
-        [onCreateOrUpdateBubble.type]: (state, action) => {
-            console.log(action.payload)
-            return state
+        [onCreateOrUpdateBubble.type]: (state, {payload: bubble}) => {
+            return {...state, bubble}
         },
 
         [onRemoveBubble.type]: (state, action) => {

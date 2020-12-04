@@ -17,7 +17,8 @@ export const SendLogin = (dispatch) => async({
           'Content-Type': 'application/json'
         }, 
         body: JSON.stringify(bubble)
-
+        
+        return dispatch(onCreateBubble(response.toJSON()))
     */
 
     /*const response = await fetch('http://localhost:8080/login',{
