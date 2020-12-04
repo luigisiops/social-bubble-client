@@ -7,8 +7,8 @@ import GetUserBubbles from "../use-cases/getUserBubbles"
 export const Dashboard = ({bubbles, getBubbles, GetUserBubbles}) => {
    
    useEffect (() => {
-      getBubbles()
-   })
+      getBubbles({})
+   },[])
 
 
    return (
