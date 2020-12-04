@@ -1,31 +1,33 @@
 import { createReducer } from "@reduxjs/toolkit"
 import {
-    onUserLogin,
-    onUserLogout,
-    onUpdateUserStatus,
-    onCreateOrUpdateBubble,
-    onRemoveBubble,
-    onCreateOrUpdateBubbleUser,
-    onleaveBubble,
+   onUserLogin,
+   onUserLogout,
+   onUpdateUserStatus,
+   onCreateOrUpdateBubble,
+   onRemoveBubble,
+   onCreateOrUpdateBubbleUser,
+   onleaveBubble,
 } from "./actions"
 
 const initialState = {
-    isAuthenticated: false,
-    user: {
-        id: 1,
-        firstName: "John",
-        lastName: "Smith",
-        email: "johnsmith@email.com",
-        password: "password",
-    }
+   isAuthenticated: false,
+   user: {
+      id: 1,
+      firstName: "John",
+      lastName: "Smith",
+      email: "johnsmith@email.com",
+      password: "password",
+   },
 }
 
-export const login = createReducer({},
-    {
-        [onUserLogin.type]: (state, {payload: user}) => {            
-            return {...state, user}
-        },
-    })
+export const login = createReducer(
+   {},
+   {
+      [onUserLogin.type]: (state, { payload: user }) => {
+         return { ...state, user }
+      },
+   }
+)
 
 export const bubble = createReducer(
     {
@@ -36,24 +38,26 @@ export const bubble = createReducer(
             return {...state, bubble}
         },
 
-        [onRemoveBubble.type]: (state, action) => {
-            console.log(action.payload)
-            return state
-        }
-    })
+      [onRemoveBubble.type]: (state, action) => {
+         console.log(action.payload)
+         return state
+      },
+   }
+)
 
 export const bubbleUsers = createReducer(
-    {
-        byId: {},
-        byUserId: {},
-        byBubbleId: {}
-    },
-    {
-        [onCreateOrUpdateBubbleUser.type]: (state, action) => {
-            console.log(action.payload)
-            return state
-        }
-    })
+   {
+      byId: {},
+      byUserId: {},
+      byBubbleId: {},
+   },
+   {
+      [onCreateOrUpdateBubbleUser.type]: (state, action) => {
+         console.log(action.payload)
+         return state
+      },
+   }
+)
 /*
 export const authReducer =  createReducer(state = initialState, {
 
