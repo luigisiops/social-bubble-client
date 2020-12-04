@@ -1,6 +1,6 @@
 import React from 'react'
 import './Bubbles.css'
-import Navbar from '../Navbar/Navbar'
+import Navbar from "../../Navbar/Navbar"
 
 function Bubbles() {
 

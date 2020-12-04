@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { NavLink } from "react-router-dom"
 import { connect } from "react-redux"
 import "./BubbleBuilder.css"
-import Navbar from "../Navbar/Navbar"
+import Navbar from "../../Navbar/Navbar"
 
 
 
