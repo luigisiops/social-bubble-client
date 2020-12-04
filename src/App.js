@@ -15,7 +15,7 @@ import Register from './login/ui/register'
 
 import Bubbles from './Bubbles/ui/Bubbles'
 import BubbleBuilder from './BubbleBuilder/ui/BubbleBuilder';
-import { Dashboard } from './dashboard/ui/Dashboard';
+import  Dashboard from './dashboard/ui/Dashboard';
 
 
 const App = () => {

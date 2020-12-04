@@ -1,8 +1,8 @@
 import {onGetBubbles} from '../framework/actions'
 
-export const GetUserBubbles = (dispatch) => async({
+export const GetUserBubbles = (dispatch) => async(
     user
-}) => {
+) => {
     
     const userId = {id: user.id}
 
