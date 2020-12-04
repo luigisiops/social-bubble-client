@@ -3,10 +3,11 @@ import { NavLink } from "react-router-dom"
 import { connect } from "react-redux"
 import "./login.css"
 
-import { UserLogin } from '../use-cases/user-login'
+//import {onUserLogin, onCreateOrUpdateBubble, onCreateOrUpdateBubbleUser} from '../framework/actions'
+import {SendLogin} from '../use-cases/user-login'
 
 
-export const Login = (props) => {
+export const Login = ({userLogin}) => {
     const [fields, setFields] = useState({})
 
     const [loginStatus, setloginStatus] = useState({})
@@ -15,9 +16,10 @@ export const Login = (props) => {
             ...fields,
             [evt.target.name]: evt.target.value
         })
-        const performLoginRequest = (fields) => {
 
-            fetch('http://localhost:8080/login',{
+        const performLoginRequest = () => {
+
+            /*fetch('http://localhost:8080/login',{
               method: 'POST', 
               headers: {
                 'Content-Type': 'application/json'
@@ -27,11 +29,9 @@ export const Login = (props) => {
             .then(result => {
               if(result.success) {
                 // logged in successfully 
-                // dispatch an action and update the isAuthenticated to true 
-                props.onLogin() 
-              }
-            })
-        
+                // dispatch an action and update the isAuthenticated to true */
+             /* }
+            })*/
           }
     console.log(fields)
 
@@ -59,7 +59,7 @@ export const Login = (props) => {
                     </input>
                 </div>
 
-                <button className="signIn-button" onClick = {() => performLoginRequest()}>Sign In</button>
+                <button className="signIn-button" onClick = {() => userLogin({fields})}>Sign In</button>
             </div>
             <div className="signup-link">
                 <p>Not a user? <NavLink to="/register/">Register</NavLink></p>
@@ -69,10 +69,8 @@ export const Login = (props) => {
 }
 
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onLogin: () => dispatch({type: 'ON_LOGIN'})
-    }
-}
+const mapDispatchToProps = (dispatch) => ({
+        userLogin: SendLogin(dispatch)
+})
 
 export default connect(null, mapDispatchToProps)(Login)
