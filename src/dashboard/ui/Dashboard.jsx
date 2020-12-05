@@ -6,7 +6,7 @@ import { GetUserBubbles } from "../use-cases/getUserBubbles"
 
 export const Dashboard = ({ bubbles, getBubbles }) => {
    const [loading, setLoading] = useState(true)
-
+   console.log(bubbles.bubbleList)
    useEffect(() => {
       getBubbles(10)
    }, [])
