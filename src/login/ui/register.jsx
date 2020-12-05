@@ -22,7 +22,7 @@ export const Register = () => {
         {
             firstName: fields.firstName,
             lastName: fields.lastName,
-            username: fields.username,
+            email: fields.email,
             password: fields.password,
         })
         setFields({})
