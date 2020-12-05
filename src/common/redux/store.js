@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import {
     login,
-    bubble,
-    bubbleUsers
 } from '../../login/framework/reducer'
+import {
+    bubble,
+    bubbleUsers,
+} from '../../dashboard/framework/reducer'
 
 const reducers = {
     login,

@@ -11,6 +11,7 @@ export const Dashboard = ({bubbles, getBubbles}) => {
 
    return (
       <div>Dashboard
+
       </div>
 
    )
@@ -18,8 +19,8 @@ export const Dashboard = ({bubbles, getBubbles}) => {
 
 }
 
-const mapStateToProps = (state, bubbles) => ({
-   bubbles: state.bubbleList
+const mapStateToProps = (state, {bubbles}) => ({
+   bubbles: state.bubble
 })
 
 const mapDispatchToProps = (dispatch) => ({

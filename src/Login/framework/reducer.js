@@ -29,36 +29,6 @@ export const login = createReducer(
    }
 )
 
-export const bubble = createReducer(
-   {
-      byId: {},
-   },
-   {
-      [onCreateOrUpdateBubble.type]: (state, action) => {
-         console.log(action.payload)
-         return state
-      },
-
-      [onRemoveBubble.type]: (state, action) => {
-         console.log(action.payload)
-         return state
-      },
-   }
-)
-
-export const bubbleUsers = createReducer(
-   {
-      byId: {},
-      byUserId: {},
-      byBubbleId: {},
-   },
-   {
-      [onCreateOrUpdateBubbleUser.type]: (state, action) => {
-         console.log(action.payload)
-         return state
-      },
-   }
-)
 /*
 export const authReducer =  createReducer(state = initialState, {
 
@@ -71,4 +41,4 @@ export const authReducer =  createReducer(state = initialState, {
     return state
 }
 */
-export default { login, bubble, bubbleUsers }
+export default { login }
