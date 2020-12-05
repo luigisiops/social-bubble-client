@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top:15px;
+    color: white;
+    background-color: rgb(81, 163, 211);
+    height: 100vh;
+}
+.dashboard-username {
+    font-family: 'Passion One';
+    font-weight: 700;
+    font-size: 54px;
+}
+
+.profile-image {
+    margin-top: 30px;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+}
+
+.dashboard-status {
+    font-family: 'Roboto';
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    color: yellow
+}
+
+.status-input {
+    margin-top: 20px;
+    height: 25px;
+    width: 200px;
+    border: none;
+    border-radius: 7px;
+}
+
+.bubble-lists {
+    font-family: 'Roboto';
+    display: inherit;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100vw;
+    padding-left:10px;
+    margin-top: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.473) ;
+    font-size: 20px;
+}
+
+.bubble-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    font-size: 24px;
+    color: black;
+    border: 1.5px solid grey;
+    width: 250px;
+    height: 50px;
+    border-radius: 7px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}

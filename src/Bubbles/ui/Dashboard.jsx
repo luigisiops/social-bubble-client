@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom"
 import { connect } from "react-redux"
 import "./dashboard.css"
 import { GetUserBubbles } from "../use-cases/getUserBubbles"
+import Navbar from "../../Navbar/Navbar"
 
 export const Dashboard = ({ bubbles, getBubbles }) => {
    const [loading, setLoading] = useState(true)
@@ -23,15 +24,20 @@ export const Dashboard = ({ bubbles, getBubbles }) => {
       })*/
 
       return (
-         <div>Dashboard
-            <div>
-               <div>ajfkdjlfa</div>
+         <div className = "dashboard-container">
+
+               <div className = "dashboard-username">John Smith</div>
+               <img src = "stock-profile.png" className = "profile-image"></img>
+               <div className = "dashboard-status"> You are risk </div>
+               <input className = "status-input"></input>
+               <div className = "bubble-lists"> Your Plans </div>
                <div>
                   {list.map((item) => (
-                     <p key = {item.id}>{item.title}</p>
+                     <div className = "bubble-item" key = {item.id}>{item.title}</div>
                   ))}
                </div>
-         </div>
+
+
          </div>
 
       )

@@ -2,11 +2,10 @@ import { configureStore } from '@reduxjs/toolkit'
 import {
     login,
 } from '../../login/framework/reducer'
+
 import {
     bubble,
     bubbleUsers,
-} from '../../dashboard/framework/reducer'
-import {
     bubblePosts
 } from '../../Bubbles/framework/reducer'
 

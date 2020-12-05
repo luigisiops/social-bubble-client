@@ -1,8 +1,30 @@
 import { createReducer } from "@reduxjs/toolkit"
 
 import {
-    onGetBubblePosts
+    onGetBubblePosts,
+    onGetBubbles,
 } from "./actions"
+
+export const bubble = createReducer(
+    {
+       bubbleList: [],
+    },
+    {
+       [onGetBubbles.type]: (state, { payload: bubbleList }) => {
+          return { ...state, bubbleList }
+       },
+    }
+ )
+ 
+ export const bubbleUsers = createReducer(
+    {
+       byId: {},
+       byUserId: {},
+       byBubbleId: {},
+    },
+ {}
+ 
+ )
 
 export const bubblePosts = createReducer(
     {
@@ -17,4 +39,4 @@ export const bubblePosts = createReducer(
     }
 )
 
-export default {bubblePosts}
+export default {bubblePosts, bubble, bubbleUsers}
