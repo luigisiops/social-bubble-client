@@ -33,7 +33,7 @@ export const Dashboard = ({ bubbles, getBubbles }) => {
                <div className = "bubble-lists"> Your Plans </div>
                <div>
                   {list.map((item) => (
-                     <div className = "bubble-item" key = {item.id}>{item.title}</div>
+                     <NavLink to ="/bubbles" className = "bubble-item" key = {item.id}>{item.title}</NavLink>
                   ))}
                </div>
 

@@ -14,6 +14,7 @@
     height: 100vh;
 }
 .dashboard-username {
+    margin-top: 25px;
     font-family: 'Passion One';
     font-weight: 700;
     font-size: 54px;
