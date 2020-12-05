@@ -6,11 +6,15 @@ import {
     bubble,
     bubbleUsers,
 } from '../../dashboard/framework/reducer'
+import {
+    bubblePosts
+} from '../../Bubbles/framework/reducer'
 
 const reducers = {
     login,
     bubble,
-    bubbleUsers
+    bubbleUsers,
+    bubblePosts,
 }
 
 const store = configureStore({
