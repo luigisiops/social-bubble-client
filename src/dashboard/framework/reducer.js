@@ -8,7 +8,7 @@ import {
 
 export const bubble = createReducer(
    {
-      bubbleList: {},
+      bubbleList: [],
    },
    {
       [onGetBubbles.type]: (state, { payload: bubbleList }) => {
