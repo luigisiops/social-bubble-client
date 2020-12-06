@@ -5,7 +5,7 @@ import { verifyToken } from './actions/userActions.js'
 
 import './App.css';
 
-// import store from "./common/redux/store"
+import store from "./common/redux/store"
 // import {
 //   Redirect,
 //   Route,
