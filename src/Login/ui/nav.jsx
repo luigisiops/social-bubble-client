@@ -1,9 +1,9 @@
 import React, { Component, useState } from 'react'
-import { Menu, Button } from 'semantic-ui-react'
+import { Menu, Button, Grid} from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 
-const MenuExample = () => {
+const Nav = () => {
     const [state, setState] = useState("")
     const [activeItem, setActiveItem] = useState("")
 
@@ -64,4 +64,4 @@ const MenuExample = () => {
 }
 
 
-export default MenuExample
+export default Nav

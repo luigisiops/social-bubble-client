@@ -1,13 +1,18 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from "react-router-dom"
 import { connect } from "react-redux"
+import { Feed, Icon, Divider, Button } from 'semantic-ui-react'
 import './Bubbles.css'
-import {GetBubblePosts} from "../use-cases/getBubblePosts"
-import {GetBubbleUsers} from "../use-cases/getBubbleUsers"
+
+import Nav from "../../login/ui/nav"
+
+import { GetBubblePosts } from "../use-cases/getBubblePosts"
+import { GetBubbleUsers } from "../use-cases/getBubbleUsers"
 
 
-export const  Bubbles = ({getPosts, getBubbleUsers, posts}) => {
-    const test = {name: 'John Smith', date: '9/10/2020', post: 'Some random test post about an activity'}
+
+export const Bubbles = ({ getPosts, getBubbleUsers, posts }) => {
+    const test = { name: 'John Smith', date: '9/10/2020', post: 'Some random test post about an activity' }
     useEffect(() => {
         getPosts(10)
         getBubbleUsers(10)
@@ -16,33 +21,54 @@ export const  Bubbles = ({getPosts, getBubbleUsers, posts}) => {
 
     return (
         <div className="bubbles-container">
-            <h1 className = "bubble-title">Family</h1>
-            <div className = "toggle">
-                <div className = "links">Activities</div>
-                <div className = "links">Members</div>
-            </div>
-            <div className = "bubble-status">This bubble is at risk!</div>
-            <div className = "user-post">
-                <img src = "stock-profile.png" className = "profile-pic"></img>
-                <div className = "comment-info">
-                    <div className = "name-date">
-                        <div className = "username">John Smith</div>
-                        <div className = "date">9/29/2020</div>
-                    </div>
-                    <div className = "post-content">This is a comment to test if an activity is safe</div>
-                </div>
-            </div>
+            <Nav/>
+            <h1 className="bubble-title">Family</h1>
+            <div className="toggle">
+            <Button className="links" basic color='blue'>Activities</Button>
+            <Button className="links" basic color='blue'>Members</Button>
 
-            <div className = "user-post">
-                <img src = "stock-profile.png" className = "profile-pic"></img>
-                <div className = "comment-info">
-                    <div className = "name-date">
-                        <div className = "username">John Smith</div>
-                        <div className = "date">9/29/2020</div>
-                    </div>
-                    <div className = "post-content">This is a comment to test if an activity is safe</div>
-                </div>
             </div>
+            <div className="bubble-status">This bubble is at risk!</div>
+
+            <Feed>
+
+            <Divider />
+
+                <Feed.Event>
+                    <Feed.Label>
+                        <img src='stock-profile.png' />
+                    </Feed.Label>
+                    <Feed.Content>
+                        <Feed.Summary>
+                            <Feed.User>Elliot Fu</Feed.User> added you as a friend
+          <Feed.Date>1 Hour Ago</Feed.Date>
+                        </Feed.Summary>
+                        <Feed.Meta>
+                        </Feed.Meta>
+                    </Feed.Content>
+                </Feed.Event>
+
+                <Divider />
+
+                <Feed.Event>
+                    <Feed.Label>
+                        <img src='stock-profile.png' />
+                    </Feed.Label>
+                    <Feed.Content>
+                        <Feed.Summary>
+                            <Feed.User>Elliot Fu</Feed.User> added you as a friend
+          <Feed.Date>1 Hour Ago</Feed.Date>
+                        </Feed.Summary>
+                        <Feed.Meta>
+                        </Feed.Meta>
+                    </Feed.Content>
+                </Feed.Event>
+
+                <Divider />
+
+
+            </Feed>
+
 
         </div>
     )

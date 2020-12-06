@@ -1,10 +1,10 @@
 import {React} from 'react'
-import MenuExample from "./nav"
+import Nav from "./nav"
 
 const LandingPage = () => {
     return(
         <div>
-            <MenuExample/>
+            <Nav/>
             <div>This can be a landing page for the project</div>
         </div>
 
