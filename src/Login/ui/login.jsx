@@ -59,10 +59,10 @@ export const Login = ({userLogin}) => {
                     </input>
                 </div>
 
-                <NavLink to ="/dashboard/"><button className="signIn-button" onClick = {() => userLogin({fields})}>Sign In</button></NavLink>
+                <NavLink to ="/dashboard"><button className="signIn-button" onClick = {() => userLogin({fields})}>Sign In</button></NavLink>
             </div>
             <div className="signup-link">
-                <p>Not a user? <NavLink to="/register/">Register</NavLink></p>
+                <p>Not a user? <NavLink to="/register">Register</NavLink></p>
             </div>
         </div>
     )

@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink } from "react-router-dom"
 import {connect} from "react-redux"
+import {GetBubbleUsers} from '../use-cases/getBubbleUsers'
 
-export const Members = () => {
+
+export const Members = ({getBubbleUsers}) => {
+
+    useEffect(()=> {
+        getBubbleUsers(8)
+    },[])
 
     return (
         <div>
@@ -18,6 +24,13 @@ export const Members = () => {
 
 }
 
+const mapStateToProps = (state, {users}) => ({
+    bubbleUsers: state.bubbleUsers
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    getBubbleUsers: GetBubbleUsers(dispatch)
+})
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Members)

@@ -4,4 +4,6 @@ export const onGetBubbles = createAction("dashboard.getBubbles")
 
 export const onGetBubblePosts = createAction("bubbles.getBubbleInfo")
 
-export const onGetBubbleMembers = createAction("bubbles.getBubble.members")
+export const onGetBubbleUsers = createAction("bubbles.getBubble.users")
+
+export const onAddBubbles = createAction("bubbles.addBubble")
