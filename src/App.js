@@ -41,11 +41,11 @@ export default function App() {
     <Provider store = {store}>
       <Router>
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/entry/:id" component={Entry} />
-          <Route exact path="/page/:page" component={Home} />
-          <Route exact path="/signin" component={SignIn} />
-          <Route exact path="/signup" component={SignUp} />
+          <Route exact path= "/" component={Home} />
+          <Route exact path= "/entry/:id" component={Entry} />
+          <Route exact path= "/page/:page" component={Home} />
+          <Route exact path= "/signin" component={SignIn} />
+          <Route exact path= "/signup" component={SignUp} />
           <Route exact path = "/login" component={Login} />
           <Route exact path = "/register" component={Register} />
           <Route exact path = '/bubbles' component={Bubbles} />
