@@ -16,7 +16,8 @@ import Register from './login/ui/register'
 import Bubbles from './Bubbles/ui/Bubbles'
 import BubbleBuilder from './BubbleBuilder/ui/BubbleBuilder';
 import Dashboard from './Bubbles/ui/Dashboard';
-import Members from './Bubbles/ui/Members'
+import Members from './Bubbles/ui/Members';
+import LandingPage from './login/ui/landingPage';
 
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
     <Provider store = {store}>
       <Router>
         <Switch>
+          <Route exact path = "/" component = {LandingPage}/>
           <Route exact path = "/login" component={Login} />
           <Route exact path = "/register" component={Register} />
           <Route exact path = '/bubbles' component={Bubbles} />
