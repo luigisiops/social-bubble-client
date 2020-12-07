@@ -1,72 +1,40 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-// import 'App.css';
+import './App.css';
 
-const apiUrl = 'http://localhost:8080';
+import React from "react"
+import { Provider } from "react-redux"
+import store from "./common/redux/store"
+import {
+  Redirect,
+  Route,
+  BrowserRouter as Router,
+  Switch,
+  BrowserRouter,
+} from "react-router-dom"
+src/login/ui/login.jsx
+import  { Login }  from './login/ui/login.jsx'
+import { Register } from './login/ui/register'
 
-axios.interceptors.request.use(
-    config => {
-      const { origin } = new URL(config.url);
-      const allowedOrigins = [apiUrl];
-      const token = localStorage.getItem('token');
-      if (allowedOrigins.includes(origin)) {
-        config.headers.authorization = `Bearer ${token}`;
-      }
-      return config;
-    },
-    error => {
-      return Promise.reject(error);
-    }
+import Bubbles from './login/ui/components/Bubbles/Bubbles'
+import BubbleBuilder from './login/ui/components/BubbleBuilder/BubbleBuilder';
+
+const token = localStorage.getItem("jsonwebtoken");
+setAuthenticationHeader(token);
+
+const App = () => {
+  return (
+    <BrowserRouter>
+    <Provider store = {store}>
+      <Router>
+        <Switch>
+          <Route exact path = "/login" exact component={Login} />
+          <Route exact path = "/register" component={Register} />
+          <Route exact path = '/bubbles' component={Bubbles} />
+          <Route exact path = '/bubble-builder' component={BubbleBuilder} />
+        </Switch>
+      </Router>
+    </Provider>
+    </BrowserRouter>
   );
-  
+}
 
-function App() {
-    const storedJwt = localStorage.getItem('token');
-    const [jwt, setJwt] = useState(storedJwt || null);
-    const [register, setFields] = useState([]);
-    // const [loginStatus, setLoginStatus] = useState(true);
-    const [fetchError, setFetchError] = useState(null);
-
-    const getJwt = async () => {
-        const { data } = await axios.get(`${apiUrl}/jwt`);
-        localStorage.setItem('token', data.token);
-        setJwt(data.token);
-      };
-    
-    const getFields = async () => {
-        try {
-          const { data } = await axios.get(`${apiUrl}/register`);
-          setFields(data);
-          setFetchError(null);
-        } catch (err) {
-          setFetchError(err.message);
-        }
-      };
-      return (
-        <>
-          <section style={{ marginBottom: '10px' }}>
-            <button onClick={() => getJwt()}>Get JWT</button>
-            {jwt && (
-              <pre>
-                <code>{jwt}</code>
-              </pre>
-            )}
-          </section>
-          <section>
-            <button onClick={() => getFields()}>
-              Get Fields
-            </button>
-            <ul>
-              {register.map((field, i) => (
-                <li>{field.description}</li>
-              ))}
-            </ul>
-            {fetchError && (
-              <p style={{ color: 'red' }}>{fetchError}</p>
-            )}
-          </section>
-        </>
-      );
-    }
-    
-    export default App;
+export default App;
