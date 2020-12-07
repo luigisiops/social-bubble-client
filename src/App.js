@@ -20,7 +20,7 @@ import BubbleBuilder from './login/ui/components/BubbleBuilder/BubbleBuilder';
 const token = localStorage.getItem("jsonwebtoken");
 setAuthenticationHeader(token);
 
-const App = () => {
+function App() {
   return (
     <BrowserRouter>
     <Provider store = {store}>
