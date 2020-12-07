@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react"
 import { NavLink } from "react-router-dom"
 import { connect } from "react-redux"
 import "./login.css"
+import { setAuthenticationHeader } from "../../utils/Auth";
 
 import { UserLogin } from '../use-cases/user-login'
-import Axios from "axios";
+import axios from "axios";
   
-function Login(props) {
-    const [fields, setFields] = useState({})
-    const [loginStatus, setLoginStatus] = useState(true);
+export function Login(props) {
+    
     // const [adminUser, setAdminUser] = useState({});
     // const [guestUser] = useState({
     //   username: "David",
@@ -23,8 +23,9 @@ function Login(props) {
     //       },
     //     });
     //   };
-
+  const [fields, setFields] = useState({})
       function handleLogin(e) {
+      
         setFields({
           ...fields,
           [e.target.name]: e.target.value,
@@ -131,6 +132,9 @@ function Login(props) {
     )
 
     return (
+        <>
+        <>
+
         <div className="login-container">
             <div className="logo">Social Bubble</div>
             <form className="login-form" onSubmit={Login}>
@@ -152,31 +156,38 @@ function Login(props) {
                         onChange={handleLogin}>
                     </input>
                 </div>
-
-            <Button type="submit" onClick={handleLoginPost} > 
+                <button
+          onClick={this.handleLoginPost}
+          type="button"
+          className="login-btn"
+        >
+          Login
+        </button>
+            <button type="submit" onClick={handleLoginPost} > 
             User Login 
-            </Button>
+            </button>
             
             </form>
-           {loginStatus} 
 
-           {/*  && (
-                <button className="signIn-button" onClick={userAuthenticated}>check if authenticated</button>
-            )} */}
 
-            <h1>{loginStatus}</h1>
+
+
+
             <div className="signup-link">
                 <p>Not a user? <NavLink to="/register/">Register</NavLink></p>
             </div>
         </div>
+        </>
+    </>
   );
 }}
 
 
-        const mapDispatchToProps = (dispatch) => {
-            return {
-                onLogin: () => dispatch({ type: 'ON_LOGIN' })
-            }
-        };
 
-export default connect(null, mapDispatchToProps)(Login)
+//         const mapDispatchToProps = (dispatch) => {
+//             return {
+//                 onLogin: () => dispatch({ type: 'ON_LOGIN' })
+//             }
+//         };
+
+// export default connect(null, mapDispatchToProps)(Login)
