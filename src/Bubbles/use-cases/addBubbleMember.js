@@ -1,11 +1,11 @@
 import { onAddBubbleMember} from '../framework/actions'
 
 export const AddBubbleMember = (dispatch) => async (
-    bubble
+    fields, bubbleId
 ) => {
-    const bubbleId = {id : bubble}
-    //How to get email?
-    const email = {}
+    
+    const bubbleId = bubbleId
+    const email = fields.email
 
     const response = await fetch(`http://localhost:8080/${bubbleId}/bubbleuser`, {
         method: 'POST',
