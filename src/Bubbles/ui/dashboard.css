@@ -13,6 +13,11 @@
     height: 100vh;
     background:  rgb(81, 163, 211);
 }
+
+.nav-component-container {
+    color: white !important;
+}
+
 .dashboard-username {
     margin-top: 25px;
     font-family: 'Passion One';

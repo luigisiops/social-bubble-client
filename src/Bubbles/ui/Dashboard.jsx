@@ -16,7 +16,7 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, u
    const [adding, setAdding] = useState(false)
    const [fields, setFields] = useState({})
    const [userStatus, setUserStatus] = useState('green')
-   const [statusText, setStatusText] = useState('You are healthy')
+   const [statusText, setStatusText] = useState('Healthy')
 
    let status = user.user.user_status
    
@@ -86,11 +86,11 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, u
                updateUserStatus(userStatus)
 
                if (userStatus === 'green') {
-                 setStatusText("You are healthy")
+                 setStatusText("Healthy")
                } else if (userStatus === 'yellow') {
-                  setStatusText("You are at risk")
+                  setStatusText("At Risk")
                } else if (userStatus === 'red') {
-                  setStatusText("You are sick")
+                  setStatusText("Sick")
                }
                
                }}>Update Status</Button>
