@@ -29,15 +29,11 @@ export const bubble = createReducer(
 
 export const bubbleUsers = createReducer(
     {
-        byId: {},
-        byUserId: {},
-        byBubbleId: {},
+        byId: [],
     },
     {
-        [onGetBubbleUsers.type]: (state, { payload: bubbleUsers }) => {
-            bubbleUsers.forEach((item) => {
-                state.byId[item.id] = item
-            })
+        [onGetBubbleUsers.type]: (state, { payload: byId }) => {
+            return {...state, byId}
         }
     }
 
