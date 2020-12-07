@@ -6,14 +6,16 @@ import { GetUserBubbles } from "../use-cases/getUserBubbles"
 import { GetBubbleUsers } from "../use-cases/getBubbleUsers"
 import { AddNewBubble } from "../use-cases/addNewBubble"
 import Nav from "../../login/ui/nav"
+import {UpdateUserStatus} from "../use-cases/updateUserStatus"
 
 import { Image, Dropdown, Input, Button, Card, Header, Icon } from 'semantic-ui-react'
 
 
-export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers }) => {
+export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, updateUserStatus}) => {
    const [loading, setLoading] = useState(true)
    const [adding, setAdding] = useState(false)
    const [fields, setFields] = useState({})
+   const [userStatus, setUserStatus] = useState('green')
 
    const setField = (evt) =>
       setFields({
@@ -24,9 +26,6 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers })
 
    console.log(bubbles.bubbleList)
 
-   const redirect = (element) => {
-
-   }
    useEffect(() => {
       getBubbles(8)
    }, [])
@@ -38,15 +37,14 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers })
    else {
       const list = bubbles.bubbleList
       const userId = 10
-      /*const content = list.map((item) => {
-         <div>{item.title}</div>
-      })*/
-
-      const dropdownOptions = [
-         {
-            text: "I am healthy",
-            value: 'I am healthy'
-         }, { text: "I am Sick", value: "I am Sick" }]
+      
+      const handleUpdateStatus = (evt) => {
+         console.log(evt.target.value)
+         
+         
+         
+         setUserStatus(evt.target.value)
+      }
 
       return (
          <div className="dashboard-container">
@@ -54,12 +52,23 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers })
             <div className="dashboard-username">John Smith</div>
             <Image src="stock-profile.png" className="profile-image" />
             <div className="dashboard-status"> You are at risk </div>
-            <Dropdown
+
+            <div className="user-status-container">
+            {/* <Dropdown className="select-status"
                placeholder='Select Status'
                fluid
                selection
-               options={dropdownOptions}
-            />
+               name = 'selected-status'
+               onChange = {handleUpdateStatus}
+            /> */}
+            <select onChange={handleUpdateStatus}>
+               <option value="green">I am healthy</option>
+               <option value="yellow">I am at risk</option>
+               <option value="red">I am sick</option>
+            </select>
+            <Button onClick = {() => updateUserStatus(userStatus)}>Update Status</Button>
+            </div>
+            
             {(adding === true) ?
                <div className="add-to-bubble">
                   <Input className="status-input" placeholder="Create new bubble"
@@ -107,6 +116,7 @@ const mapStateToProps = (state, { bubbles }) => ({
 const mapDispatchToProps = (dispatch) => ({
    getBubbles: GetUserBubbles(dispatch),
    addNewBubble: AddNewBubble(dispatch),
+   updateUserStatus: UpdateUserStatus(dispatch)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

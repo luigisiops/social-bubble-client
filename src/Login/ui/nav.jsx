@@ -14,7 +14,7 @@ const Nav = () => {
 
 
     return (
-        <Menu>
+        <Menu className="nav-container">
             <Link to='/dashboard'>
                 <Menu.Item
                     name='Home'
