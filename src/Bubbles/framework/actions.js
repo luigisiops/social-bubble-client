@@ -10,3 +10,5 @@ export const onAddBubbleUsers = createAction("bubbles.addBubbleUser")
 
 export const onAddBubbles = createAction("bubbles.addBubble")
 export const onDeleteBubble = createAction('bubbles.deleteBubble')
+
+export const onAddBubbleMember = createAction("members.addBubbleMember")
