@@ -11,11 +11,24 @@ import {UpdateUserStatus} from "../use-cases/updateUserStatus"
 import { Image, Dropdown, Input, Button, Card, Header, Icon } from 'semantic-ui-react'
 
 
-export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, updateUserStatus}) => {
+export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, updateUserStatus, user}) => {
    const [loading, setLoading] = useState(true)
    const [adding, setAdding] = useState(false)
    const [fields, setFields] = useState({})
    const [userStatus, setUserStatus] = useState('green')
+   const [statusText, setStatusText] = useState('You are healthy')
+
+   let status = user.user.user_status
+   
+   // if (userStatus === 'green') {
+   //   let statusText = "You are healthy"
+   // } else if (userStatus === 'yellow') {
+   //    let statusText = "You are at risk"
+   // } else if (userStatus === 'red') {
+   //    let statusText = "You are sick"
+   // }
+
+
 
    const setField = (evt) =>
       setFields({
@@ -41,17 +54,20 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, u
       const handleUpdateStatus = (evt) => {
          console.log(evt.target.value)
          
-         
-         
          setUserStatus(evt.target.value)
+
+         
+
       }
 
       return (
          <div className="dashboard-container">
-            <Nav />
+            <div className='nav-component-container'>
+               <Nav />
+            </div>
             <div className="dashboard-username">John Smith</div>
-            <Image src="stock-profile.png" className="profile-image" />
-            <div className="dashboard-status"> You are at risk </div>
+            <Image src="stock-profile.png" className={"profile-image image-" + status}/>
+            <div className= {"dashboard-status " + status}>{statusText}</div>
 
             <div className="user-status-container">
             {/* <Dropdown className="select-status"
@@ -66,7 +82,18 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, u
                <option value="yellow">I am at risk</option>
                <option value="red">I am sick</option>
             </select>
-            <Button onClick = {() => updateUserStatus(userStatus)}>Update Status</Button>
+            <Button onClick = {() => {
+               updateUserStatus(userStatus)
+
+               if (userStatus === 'green') {
+                 setStatusText("You are healthy")
+               } else if (userStatus === 'yellow') {
+                  setStatusText("You are at risk")
+               } else if (userStatus === 'red') {
+                  setStatusText("You are sick")
+               }
+               
+               }}>Update Status</Button>
             </div>
             
             {(adding === true) ?
@@ -111,6 +138,7 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, u
 
 const mapStateToProps = (state, { bubbles }) => ({
    bubbles: state.bubble,
+   user: state.user
 })
 
 const mapDispatchToProps = (dispatch) => ({
