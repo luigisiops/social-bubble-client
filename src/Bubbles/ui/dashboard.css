@@ -20,6 +20,10 @@
     font-size: 54px;
 }
 
+.nav-item-container {
+    color: white;
+}
+
 .nav-container a {
     background: rgb(0, 111, 176);
     border: none;
@@ -31,6 +35,36 @@
     width: 80%;
 }
 
+.user-status-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.user-status-container select {
+    margin-bottom: 5px;
+    width: 100%;
+    outline: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    padding: 3px;
+}
+
+
+.green {
+    color: rgb(29, 230, 29) !important;
+}
+
+.yellow {
+    color: rgb(255, 255, 0) !important;
+}
+
+.red {
+    color: rgb(223, 0, 0) !important;
+}
+
 
 
 .profile-image {
@@ -40,12 +74,22 @@
     border-radius: 50%;
 }
 
+.image-green {
+    border: 6px solid rgb(29, 230, 29);
+}
+.image-yellow {
+    border: 6px solid rgb(255, 255, 0);
+}
+.image-red {
+    border: 6px solid rgb(223, 0, 0);
+}
+
 .dashboard-status {
     font-family: 'Roboto';
     margin-top: 10px;
+    margin-bottom: 10px;
     font-size: 20px;
     font-weight: 700;
-    color: yellow
 }
 
 .status-input {
