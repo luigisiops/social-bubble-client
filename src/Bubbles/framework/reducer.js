@@ -4,8 +4,29 @@ import {
     onGetBubblePosts,
     onGetBubbles,
     onGetBubbleUsers,
-    onAddBubbles
+    onAddBubbles,
+    onDeleteBubble,
+    onUpdateUserStatus,
 } from "./actions"
+
+export const user = createReducer(
+    {
+        user: {
+            id: 1,
+            firstName: "John",
+            lastName: "Smith",
+            email: "johnsmith@email.com",
+            password: "password",
+            user_status:"green"
+         }
+    },
+
+    {
+        [onUpdateUserStatus.type] : (state, {payload: user}) => {
+            return {...state, user}
+        }
+    },
+)
 
 export const bubble = createReducer(
     {

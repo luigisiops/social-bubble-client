@@ -4,12 +4,14 @@ import {
 } from '../../login/framework/reducer'
 
 import {
+    user,
     bubble,
     bubbleUsers,
     bubblePosts
 } from '../../Bubbles/framework/reducer'
 
 const reducers = {
+    user,
     login,
     bubble,
     bubbleUsers,
