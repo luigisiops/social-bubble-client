@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { NavLink } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 import "./dashboard.css"
 import { GetUserBubbles } from "../use-cases/getUserBubbles"
@@ -7,7 +7,7 @@ import { GetBubbleUsers } from "../use-cases/getBubbleUsers"
 import { AddNewBubble } from "../use-cases/addNewBubble"
 import Nav from "../../login/ui/nav"
 
-import { Image, Dropdown, Input, Button } from 'semantic-ui-react'
+import { Image, Dropdown, Input, Button, Card, Header, Icon } from 'semantic-ui-react'
 
 
 export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers }) => {
@@ -23,6 +23,10 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers })
    console.log(fields)
 
    console.log(bubbles.bubbleList)
+
+   const redirect = (element) => {
+
+   }
    useEffect(() => {
       getBubbles(8)
    }, [])
@@ -33,13 +37,16 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers })
 
    else {
       const list = bubbles.bubbleList
+      const userId = 10
       /*const content = list.map((item) => {
          <div>{item.title}</div>
       })*/
 
       const dropdownOptions = [
-         {text: "I am healthy",
-         value: 'I am healthy'}, {text: "I am Sick", value:"I am Sick"}]
+         {
+            text: "I am healthy",
+            value: 'I am healthy'
+         }, { text: "I am Sick", value: "I am Sick" }]
 
       return (
          <div className="dashboard-container">
@@ -61,7 +68,7 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers })
                      value={fields.title}
                      onChange={setField}>
                   </Input>
-                  <button className="" onClick={() => addNewBubble(fields)}>Add</button>
+                  <button className="" onClick={() => addNewBubble(fields, userId)}>Add</button>
                </div>
                :
                <Button primary onClick={() => setAdding(true)}>Create a new Bubble</Button>
@@ -70,7 +77,20 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers })
             <div className="bubble-lists"> Your Bubbles </div>
             <div>
                {list.map((item) => (
-                  <NavLink to="/bubbles" className="bubble-item" key={item.id}>{item.title}</NavLink>
+                  <Link to = {`/bubbles/${item.id}`}> 
+                     <Card
+                        key={item.id}
+                        header={item.title}
+                        meta='Test'
+                        description='A group for friends'
+                     >
+                        <div className="card-headers">
+                           <Header as='h3'>{item.title}</Header>
+                           <Icon name='trash' ></Icon>
+                        </div>
+                     </Card>
+                  </Link>
+         
                ))}
             </div>
          </div>

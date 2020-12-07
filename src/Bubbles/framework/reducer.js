@@ -14,7 +14,10 @@ export const bubble = createReducer(
 
     {
         [onAddBubbles.type]: (state, { payload: bubbleList }) => {
-            return { ...state, bubbleList }
+            return { ...state, bubbleList: [
+                ...state.bubbleList,
+                bubbleList
+            ] }
         },
 
         [onGetBubbles.type]: (state, { payload: bubbleList }) => {
@@ -42,7 +45,7 @@ export const bubbleUsers = createReducer(
 
 export const bubblePosts = createReducer(
     {
-        posts: {},
+        posts: [],
     },
 
     {

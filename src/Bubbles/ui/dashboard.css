@@ -94,3 +94,9 @@
     font-weight: 700;
     font-size: 54px;
 }
+
+.card-headers{
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+}
