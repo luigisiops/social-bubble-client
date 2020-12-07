@@ -14,7 +14,10 @@ export const bubble = createReducer(
 
     {
         [onAddBubbles.type]: (state, { payload: bubbleList }) => {
-            return { ...state, bubbleList }
+            return { ...state, bubbleList: [
+                ...state.bubbleList,
+                bubbleList
+            ] }
         },
 
         [onGetBubbles.type]: (state, { payload: bubbleList }) => {
@@ -26,15 +29,11 @@ export const bubble = createReducer(
 
 export const bubbleUsers = createReducer(
     {
-        byId: {},
-        byUserId: {},
-        byBubbleId: {},
+        byId: [],
     },
     {
-        [onGetBubbleUsers.type]: (state, { payload: bubbleUsers }) => {
-            bubbleUsers.forEach((item) => {
-                state.byId[item.id] = item
-            })
+        [onGetBubbleUsers.type]: (state, { payload: byId }) => {
+            return {...state, byId}
         }
     }
 
@@ -42,7 +41,7 @@ export const bubbleUsers = createReducer(
 
 export const bubblePosts = createReducer(
     {
-        posts: {},
+        posts: [],
     },
 
     {

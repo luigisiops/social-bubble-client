@@ -4,8 +4,9 @@ export const GetBubblePosts = (dispatch) => async(
     bubble
 ) => {
     const bubbleId = {id: bubble.id}
+    console.log('djfhkaf')
 
-    const response = await fetch(`http://localhost:8080/post/8`, {
+    const response = await fetch(`http://localhost:8080/post/2`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
