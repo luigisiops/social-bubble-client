@@ -20,13 +20,13 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, u
 
    let status = user.user.user_status
    
-   // if (userStatus === 'green') {
-   //   let statusText = "You are healthy"
-   // } else if (userStatus === 'yellow') {
-   //    let statusText = "You are at risk"
-   // } else if (userStatus === 'red') {
-   //    let statusText = "You are sick"
-   // }
+    if (userStatus === 'green') {
+      let statusText = "You are healthy"
+    } else if (userStatus === 'yellow') {
+       let statusText = "You are at risk"
+    } else if (userStatus === 'red') {
+      let statusText = "You are sick"
+    }
 console.log(bubbles)
 
 
@@ -40,7 +40,8 @@ console.log(bubbles)
    console.log(bubbles.bubbleList)
 
    useEffect(() => {
-      getBubbles(10)
+      console.log(user.user)
+      getBubbles(user.user.id)
    }, [])
 
 
@@ -49,7 +50,7 @@ console.log(bubbles)
 
    else {
       const list = bubbles.bubbleList
-      const userId = 10
+      const userId = user.user.id
       
       const handleUpdateStatus = (evt) => {
          console.log(evt.target.value)

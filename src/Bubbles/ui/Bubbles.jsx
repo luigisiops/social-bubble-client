@@ -9,15 +9,16 @@ import Nav from "../../Login/ui/nav"
 
 import { GetBubblePosts } from "../use-cases/getBubblePosts"
 import { GetBubbleUsers } from "../use-cases/getBubbleUsers"
+import { user } from '../framework/reducer'
 
 
 
-export const Bubbles = ({ getPosts, getBubbleUsers, posts }) => {
+export const Bubbles = ({ getPosts, getBubbleUsers, posts, user, bubble }) => {
     const test = { name: 'John Smith', date: '9/10/2020', post: 'Some random test post about an activity' }
     const bubbleId = parseInt(useParams().bubbleId)
     useEffect(() => {
-        getPosts(10)
-        getBubbleUsers(10)
+        getPosts(user.id)
+        getBubbleUsers(user.id)
 
     }, [])
     //need to grab posts info and display it and create action for adding and deleting posts
@@ -29,7 +30,12 @@ export const Bubbles = ({ getPosts, getBubbleUsers, posts }) => {
         return (
             <div className="bubbles-container">
                 <Nav/>
-                <h1 className="bubble-title">Family</h1>
+                {bubble.map(item => {
+                    if (bubbleId === item.id){
+                        return(
+                            <h1 className="bubble-title">{item.title}</h1>)
+                    }
+                })}
                 <div className="toggle">
                 <Button  primary color='blue'>Activities</Button>
                 <Link to ={`/members/${bubbleId}`}><Button className="links" primary color='blue'>Members</Button></Link>
@@ -76,8 +82,9 @@ export const Bubbles = ({ getPosts, getBubbleUsers, posts }) => {
 
 const mapStateToProps = (state, { posts }) => ({
     posts: state.bubblePosts,
-    bubbleUsers: state.bubbleUsers
-
+    bubbleUsers: state.bubbleUsers,
+    user:state.user.user,
+    bubble: state.bubble.bubbleList,
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -19,11 +19,10 @@ import 'semantic-ui-css/semantic.min.css'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
-    loginReducer: loginReducer,
+    user: loginReducer,
     bubble: bubble,
     bubbleUsers: bubbleUsers,
     bubblePosts: bubblePosts,
-    user: user
 })
 
 const store = createStore(
