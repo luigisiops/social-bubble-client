@@ -4,7 +4,7 @@ export const AddBubbleMember = (dispatch) => async (
     fields, bubbleId
 ) => {
     
-    const bubbleId = bubbleId
+    // const bubbleId = bubbleId
     const email = fields.email
 
     const response = await fetch(`http://localhost:8080/${bubbleId}/bubbleuser`, {
