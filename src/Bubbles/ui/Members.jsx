@@ -54,6 +54,7 @@ export const Members = ({getBubbleUsers, bubbleUsers}) => {
       </Card.Content>
     </Card></div>
                 ))}
+        <Link to ={`/members/${bubbleId}}/add-member`}><Button className="links" basic color='blue'>Add Member</Button></Link>
             </div>
         )
     }
