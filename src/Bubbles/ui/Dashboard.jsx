@@ -68,6 +68,7 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers })
                      value={fields.title}
                      onChange={setField}>
                   </Input>
+                  
                   <button className="" onClick={() => addNewBubble(fields, userId)}>Add</button>
                </div>
                :
