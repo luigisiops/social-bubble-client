@@ -4,10 +4,10 @@ export const AddBubbleMember = (dispatch) => async (
     fields, bubbleId
 ) => {
     
-    const bubbleId = bubbleId
+    const id = bubbleId
     const email = fields.email
 
-    const response = await fetch(`http://localhost:8080/${bubbleId}/bubbleuser`, {
+    const response = await fetch(`http://localhost:8080/${id}/bubbleuser`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

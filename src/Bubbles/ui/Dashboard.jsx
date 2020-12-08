@@ -8,7 +8,7 @@ import { AddNewBubble } from "../use-cases/addNewBubble"
 import Nav from "../../login/ui/nav"
 import {UpdateUserStatus} from "../use-cases/updateUserStatus"
 
-import { Image, Dropdown, Input, Button, Card, Header, Icon } from 'semantic-ui-react'
+import {  Dimmer, Loader, Image, Segment, Input, Button, Card, Header, Icon } from 'semantic-ui-react'
 import Navbar from "../../Navbar/Navbar"
 
 
@@ -44,8 +44,24 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, u
       getBubbles(8)
    }, [])
 
-
    if (bubbles.bubbleList === []) {
+      <div>
+    <Segment>
+      <Dimmer active>
+        <Loader content='Loading' />
+      </Dimmer>
+
+      <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
+    </Segment>
+
+    <Segment>
+      <Dimmer active inverted>
+        <Loader inverted content='Loading' />
+      </Dimmer>
+
+      <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
+    </Segment>
+  </div>
    }
 
    else {

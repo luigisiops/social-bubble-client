@@ -19,6 +19,8 @@ import Dashboard from './Bubbles/ui/Dashboard';
 import Members from './Bubbles/ui/Members';
 import LandingPage from './login/ui/landingPage';
 import AddMember from './Bubbles/ui/AddMember'
+import Time from './Bubbles/ui/time'
+
 
 
 const App = () => {
@@ -34,6 +36,8 @@ const App = () => {
           <Route exact path = '/dashboard' component = {Dashboard} />
           <Route exact path = '/members/:bubbleId' component = {Members} />
           <Route exact path = '/members/:bubbleId/add-member' component = {AddMember} />
+          <Route exact path = '/time' component = {Time} />
+
         </Switch>
       </Router>
     </Provider>
