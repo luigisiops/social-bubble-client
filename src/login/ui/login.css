@@ -112,6 +112,7 @@
         height: 35px;
         border: none;
         border-radius: 5px;
+        margin-top: 5px;
     }
     .signIn-button{
         width: 8em;
@@ -123,6 +124,10 @@
         background-color: transparent;
         border: 1px white solid;
         border-radius: 5px;
+        outline: none;
+        cursor: pointer;
+        margin-bottom: 10px;
+        text-decoration: none;
     }
     
     .signIn-button:hover{
@@ -137,6 +142,9 @@
         transition-duration: 0.3s;
         -webkit-transition-property: color, background-color;
         transition-property: color, background-color;
-    }    
-}
+    }
 
+    .signIn-button:link {
+        text-decoration: none;
+    }
+}

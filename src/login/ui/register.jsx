@@ -1,67 +1,68 @@
-import React, { useEffect, useState } from "react";
-import Axios from "axios";
-import { connect } from "react-redux"
-import { NavLink, Redirect } from "react-router-dom"
+import React, { useState } from "react"
+// import { connect } from "react-redux"
+import { NavLink } from "react-router-dom"
 import "./login.css"
+import { useHistory } from "react-router-dom"
 
-export const Register = () => {
+
+function Register() {
     const [fields, setFields] = useState({})
+    const history = useHistory();
 
-    const [loginStatus, setloginStatus] = useState({})
+    // const [loginStatus, setloginStatus] = useState({})
     const setField = (evt) =>
         setFields({
             ...fields,
             [evt.target.name]: evt.target.value
         })
-    console.log(fields)
-    Axios.defaults.withCredentials = true;
+    // console.log(fields)
 
-    const register = async (e) => {
-        e.preventDefault()
-        const response = await Axios.post("http://localhost:8080/auth/register", 
-        {
-            firstName: fields.firstName,
-            lastName: fields.lastName,
-            email: fields.email,
-            password: fields.password,
+    function performRegistrationRequest() {
+        fetch("http://localhost:8080/auth/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(fields),
         })
-        setFields({})
-        console.log(response)
-    };
+          .then((res) => res.json())
+          .then((response) => {
+            console.log("Response", response);
+            alert(response.message);
+            history.push("/login");
+          });
+      }
 
     return (
         <div className="login-container">
             <div className="logo">Social Bubble</div>
-            <form className="login-form" onSubmit = {register}>
+            <div className="login-form">
                 <div className="username-container">
                     <label>First Name</label>
                     <input className="username-input"
                         name="firstName"
                         type="text"
-                        value={fields.firstName}
-                        onChange={setField}
-                        required>
+                        // value={fields.firstName}
+                        onChange={setField}>
                     </input>
                 </div>
+
                 <div className="username-container">
                     <label>Last Name</label>
                     <input className="username-input"
                         name="lastName"
                         type="text"
-                        value={fields.lastName}
-                        onChange={setField}
-                        required>
+                        // value={fields.lastName}
+                        onChange={setField}>
                     </input>
                 </div>
-
                 <div className="username-container">
                     <label>Email</label>
                     <input className="username-input"
                         name="email"
                         type="email"
-                        value={fields.email}
-                        onChange={setField}
-                        required>
+                        // value={fields.email}
+                        onChange={setField}>
                     </input>
                 </div>
 
@@ -70,14 +71,13 @@ export const Register = () => {
                     <input className="password-input"
                         name="password"
                         type="password"
-                        value={fields.password}
-                        onChange={setField}
-                        required>
+                        // value={fields.password}
+                        onChange={setField}>
                     </input>
                 </div>
 
-                <button className="signIn-button" type ="submit">Register</button>
-            </form>
+                <button onClick={performRegistrationRequest} className="signIn-button">Register</button>
+            </div>
             <div className="signup-link">
                 <p>Already a user? <NavLink to="/login/">Login</NavLink></p>
             </div>

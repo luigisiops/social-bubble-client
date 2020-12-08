@@ -1,13 +1,140 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { NavLink } from "react-router-dom"
 import { connect } from "react-redux"
 import "./login.css"
 import { setAuthenticationHeader } from "../../utils/Auth";
-
-import { UserLogin } from '../use-cases/user-login'
 import axios from "axios";
+import { useHistory } from "react-router-dom"
+// import {SendLogin} from '../use-cases/user-login'
+
+function Login(props) {
+    const [fields, setFields] = useState({})
+    const history = useHistory();
+
+    // const [loginStatus, setloginStatus] = useState({})
+
+    function setField(evt) {
+        setFields({
+            ...fields,
+            [evt.target.name]: evt.target.value
+        })
+    }
+
+    function performLoginRequest() {
+        axios
+            .post("http://localhost:8080/auth/login", {
+            email: fields.email,
+            password: fields.password
+        })
+        .then((response) =>{
+            if (response.data.success) {
+                const token = response.data.token;
+                localStorage.setItem("jsonwebtoken", token);
+                setAuthenticationHeader(token);
+                props.onAuthenticated();
+                alert(response.data.message);
+                history.push("/");
+            } else {
+                alert(response.data.message);
+                alert("response failed");
+                setFields({
+                ...fields,
+                password: "",
+                });
+            }
+        })
+    }
+
+            /*fetch('http://localhost:8080/login',{
+              method: 'POST', 
+              headers: {
+                'Content-Type': 'application/json'
+              }, 
+              body: JSON.stringify(fields)
+            }).then(response => response.json())
+            .then(result => {
+              if(result.success) {
+                // logged in successfully 
+                // dispatch an action and update the isAuthenticated to true */
+             /* }
+            })*/
+        //   }
+    // console.log(fields)
+
+
+    return (
+        <div className="login-container">
+            <div className="logo">Social Bubble
+            </div>
+            <div className="login-form">
+                {/* <form className="login-form"> */}
+                    <div className="username-container">
+                        <label>Username</label>
+                        <input className="username-input"
+                            name="email"
+                            type="email"
+                            // value={fields.email}
+                            onChange={setField}>
+                        </input>
+                    </div>
+                    <div className="password-container">
+                        <label>Password</label>
+                        <input className="password-input"
+                            name="password"
+                            type="password"
+                            // value={fields.password}
+                            onChange={setField}>
+                        </input>
+                    </div>
+                    <button
+                    onClick={performLoginRequest}
+                    // type="submit"
+                    // className="login-btn"
+                    >
+                    Login
+                    </button>
+                {/* </form> */}
+            </div>
+            <div>
+                <NavLink to ="/dashboard">Dashboard</NavLink>
+            </div>
+            <div className="signup-link">
+                <p>Not a user? <NavLink to="/register">Register</NavLink></p>
+            </div>
+        </div>
+    )
+}
+
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        // onAuthenticated: () => dispatch(actionCreators.authenticated(true)),
+        // onAuthenticated: () => dispatch(true)  isAuthenticated: true  
+        onAuthenticated: () => dispatch({type: 'user.login'})  
+    }
+//         onUserLogin: SendLogin(dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(Login)
+
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         onUserLogin: () => dispatch({ type: 'ON_LOGIN' })
+//     }
+// };
+
+// export default connect(null, mapDispatchToProps)(Login)
+
+// import React, { useState } from "react"
+// import { NavLink } from "react-router-dom"
+// import { connect } from "react-redux"
+// import "./login.css"
+// import { setAuthenticationHeader } from "../../utils/Auth";
+
+// import { UserLogin } from '../use-cases/user-login'
+// import axios from "axios";
   
-export function Login(props) {
+// function Login(props) {
     
     // const [adminUser, setAdminUser] = useState({});
     // const [guestUser] = useState({
@@ -23,14 +150,14 @@ export function Login(props) {
     //       },
     //     });
     //   };
-  const [fields, setFields] = useState({})
-      function handleLogin(e) {
+//   const [fields, setFields] = useState({})
+//       function handleLogin(e) {
       
-        setFields({
-          ...fields,
-          [e.target.name]: e.target.value,
-        });
-      }
+//         setFields({
+//           ...fields,
+//           [e.target.name]: e.target.value,
+//         });
+//       }
     
     //   function handleAdminLogin(e) {
     //     setAdminUser({
@@ -40,31 +167,32 @@ export function Login(props) {
     //   }
 
 
-    axios.defaults.withCredentials = true;
+    // axios.defaults.withCredentials = true;
 
-    function handleLoginPost(){
-         axios
-         .post("http://localhost:8080/auth/login", {
-            email: fields.email,
-            password: fields.password
-        })
-                .then((response =>{
-                    if (response.data.success) {
-                        const token = response.data.token;
-                        localStorage.setItem("jsonwebtoken", token);
-                        setAuthenticationHeader(token);
-                        props.onAuthenticated();
-                        alert(response.data.message);
-                        props.history.push("/");
-                    } else {
-                        alert(response.data.message);
-                        alert("response failed");
-                        setFields({
-                        ...fields,
-                        password: "",
-                        });
-                    }
-    })
+//     function handleLoginPost(){
+//          axios
+//          .post("http://localhost:8080/auth/login", {
+//             email: fields.email,
+//             password: fields.password
+//         })
+//                 .then((response) =>{
+//                     if (response.data.success) {
+//                         const token = response.data.token;
+//                         localStorage.setItem("jsonwebtoken", token);
+//                         setAuthenticationHeader(token);
+//                         props.onLogin();
+//                         alert(response.data.message);
+//                         props.history.push("/");
+//                     } else {
+//                         alert(response.data.message);
+//                         alert("response failed");
+//                         setFields({
+//                         ...fields,
+//                         password: "",
+//                         });
+//                     }
+//     })
+// }
  
 
     // function handleAdminPost() {
@@ -129,65 +257,64 @@ export function Login(props) {
     // };
 
 
-    )
+    
 
-    return (
-        <>
-        <>
+//     return (
+//         <>
 
-        <div className="login-container">
-            <div className="logo">Social Bubble</div>
-            <form className="login-form" onSubmit={Login}>
-                <div className="username-container">
-                    <label>Email</label>
-                    <input className="username-input"
-                        name="email"
-                        type="email"
-                        value={fields.email}
-                        onChange={handleLogin}>
-                    </input>
-                </div>
-                <div className="password-container">
-                    <label>Password</label>
-                    <input className="password-input"
-                        name="password"
-                        type="password"
-                        value={fields.password}
-                        onChange={handleLogin}>
-                    </input>
-                </div>
-                <button
-          onClick={this.handleLoginPost}
-          type="button"
-          className="login-btn"
-        >
-          Login
-        </button>
-            <button type="submit" onClick={handleLoginPost} > 
-            User Login 
-            </button>
+//         <div className="login-container">
+//             <div className="logo">Social Bubble</div>
+//             <form className="login-form" onSubmit={Login}>
+//                 <div className="username-container">
+//                     <label>Email</label>
+//                     <input className="username-input"
+//                         name="email"
+//                         type="email"
+//                         value={fields.email}
+//                         onChange={handleLogin}>
+//                     </input>
+//                 </div>
+//                 <div className="password-container">
+//                     <label>Password</label>
+//                     <input className="password-input"
+//                         name="password"
+//                         type="password"
+//                         value={fields.password}
+//                         onChange={handleLogin}>
+//                     </input>
+//                 </div>
+//                 <button
+//           onClick={handleLoginPost}
+//           type="button"
+//           className="login-btn"
+//         >
+//           Login
+//         </button>
+//             <button type="submit" onClick={handleLoginPost} > 
+//             User Login 
+//             </button>
             
-            </form>
+//             </form>
 
 
 
 
 
-            <div className="signup-link">
-                <p>Not a user? <NavLink to="/register/">Register</NavLink></p>
-            </div>
-        </div>
-        </>
-    </>
-  );
-}}
+//             <div className="signup-link">
+//                 <p>Not a user? <NavLink to="/register/">Register</NavLink></p>
+//             </div>
+//         </div>
+
+//     </>
+//   );
+// }
 
 
 
-//         const mapDispatchToProps = (dispatch) => {
-//             return {
-//                 onLogin: () => dispatch({ type: 'ON_LOGIN' })
-//             }
-//         };
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         onLogin: () => dispatch({ type: 'ON_LOGIN' })
+//     }
+// };
 
 // export default connect(null, mapDispatchToProps)(Login)

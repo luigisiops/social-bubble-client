@@ -1,22 +1,37 @@
-import {onUserLogin} from "../framework/actions"
+import {onUserLogin} from '../framework/actions'
 
-export const UserLogin = (apiUserLogin, dispatch) => async({
-    user
+const SendLogin = (dispatch) => async({
+    fields
 }) => {
-    const {username, password} = user
+    console.log(fields)
+    
+    const user = {email: fields.email, password: fields.password}
+    // const bubble = {title: bubble.title}
 
 
-const userInfo = {username: user.firstName, lastName: user.lastName}
+    /*
 
-const response = await apiUserLogin(userInfo)
-console.log(response)
+    const response = await fetch('http://localhost:8080/create-bubble)
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json'
+        }, 
+        body: JSON.stringify(bubble)
 
-if(response.error){
-    return null
+    */
+
+    /*const response = await fetch('http://localhost:8080/login',{
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json'
+        }, 
+        body: JSON.stringify(fields)
+      })
+      console.log(response)*/
+
+    //return dispatch(onUserLogin(response.toJSON()))
+
+    return dispatch(onUserLogin(user))
 }
 
-return dispatch(onUserLogin(response.toJSON()))
-
-}
-
-export default UserLogin
+export {SendLogin}
