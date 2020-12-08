@@ -45,6 +45,17 @@ export const bubble = createReducer(
             return { ...state, bubbleList }
         },
 
+        [onDeleteBubble.type] : (state, {payload: bubbleId}) => {
+            let arr = state.bubbleList
+            let bubbleList = []
+            arr.forEach((element) => {
+                if (element.id != bubbleId){
+                    bubbleList.push(element)
+                }
+            })
+            return { ...state, bubbleList}
+        }
+
     }
 )
 

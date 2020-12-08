@@ -26,6 +26,7 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, posts, user, b
     //need to grab posts info and display it and create action for adding and deleting posts
     console.log(posts.posts)
     if (posts.posts === []) {
+        console.log('fefefe')
     }
     else {
         return (
