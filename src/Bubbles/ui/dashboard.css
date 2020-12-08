@@ -124,9 +124,19 @@
     width: 100vw;
     padding-left:10px;
     margin-top: 20px;
+    margin-bottom: 10px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.473) ;
     font-size: 20px;
 }
+
+.bubble-lists-title {
+    font-size: 2em;
+    color: white;
+    font-family: 'Passion One';
+    display: flex;
+}
+
+
 
 .bubble-item {
     display: flex;
@@ -143,6 +153,10 @@
     margin-bottom: 10px;
 }
 
+.bubble-item-container {
+    background: red;
+}
+
 .add-to-bubble{
     display: flex;
     flex-direction: column;
@@ -155,6 +169,7 @@
     font-family: 'Passion One';
     font-weight: 700;
     font-size: 54px;
+    color: white;
 }
 
 .card-headers{

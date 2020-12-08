@@ -62,7 +62,8 @@ export const Login = ({userLogin}) => {
                 <NavLink to ="/dashboard"><button className="signIn-button" onClick = {() => userLogin({fields})}>Sign In</button></NavLink>
             </div>
             <div className="signup-link">
-                <p>Not a user? <NavLink to="/register">Register</NavLink></p>
+                <p className="signup-text">Not a user?</p>
+                <p className='signup-hyperlink'><NavLink to="/register">Register</NavLink></p>
             </div>
         </div>
     )

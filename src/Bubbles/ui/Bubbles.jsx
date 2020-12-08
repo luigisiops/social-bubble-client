@@ -31,8 +31,8 @@ export const Bubbles = ({ getPosts, getBubbleUsers, posts }) => {
                 <Nav/>
                 <h1 className="bubble-title">Family</h1>
                 <div className="toggle">
-                <Button className="links" basic color='blue'>Activities</Button>
-                <Link to ={`/members/${bubbleId}`}><Button className="links" basic color='blue'>Members</Button></Link>
+                <Button  primary color='blue'>Activities</Button>
+                <Link to ={`/members/${bubbleId}`}><Button className="links" primary color='blue'>Members</Button></Link>
     
                 </div>
                 <div className="bubble-status">This bubble is at risk!</div>

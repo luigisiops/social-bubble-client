@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react'
 import { Menu, Button, Grid} from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-
+import "./nav.css"
 
 const Nav = () => {
     const [state, setState] = useState("")

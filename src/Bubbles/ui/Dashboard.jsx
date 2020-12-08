@@ -9,6 +9,7 @@ import Nav from "../../login/ui/nav"
 import {UpdateUserStatus} from "../use-cases/updateUserStatus"
 
 import { Image, Dropdown, Input, Button, Card, Header, Icon } from 'semantic-ui-react'
+import Navbar from "../../Navbar/Navbar"
 
 
 export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, updateUserStatus, user}) => {
@@ -63,7 +64,8 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, u
       return (
          <div className="dashboard-container">
             <div className='nav-component-container'>
-               <Nav />
+               {/* <Nav /> */}
+               <Navbar />
             </div>
             <div className="dashboard-username">John Smith</div>
             <Image src="stock-profile.png" className={"profile-image image-" + status}/>
@@ -82,7 +84,7 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, u
                <option value="yellow">I am at risk</option>
                <option value="red">I am sick</option>
             </select>
-            <Button onClick = {() => {
+            <Button primary onClick = {() => {
                updateUserStatus(userStatus)
 
                if (userStatus === 'green') {
@@ -110,10 +112,10 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, u
                <Button primary onClick={() => setAdding(true)}>Create a new Bubble</Button>
             }
 
-            <div className="bubble-lists"> Your Bubbles </div>
+            <div className="bubble-lists "> <h1 className="bubble-lists-title">Your Bubbles</h1> </div>
             <div>
                {list.map((item) => (
-                  <Link to = {`/bubbles/${item.id}`}> 
+                  <Link to = {`/bubbles/${item.id}`} > 
                      <Card
                         key={item.id}
                         header={item.title}

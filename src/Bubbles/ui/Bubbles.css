@@ -9,8 +9,8 @@
     flex-direction: column;
     font-family: "Roboto";
     align-items: center;
-    color: black;
-    background: rgb(248, 248, 248);
+    color: white;
+    background: rgb(81, 163, 211);
     height: 100vh;
 }
 
@@ -19,6 +19,7 @@
     font-weight: 700;
     font-size: 48px;
 }
+
 
 .toggle {
     display: flex;
