@@ -1,7 +1,8 @@
 // import { bindActionCreators } from "redux"
 import { createReducer } from "@reduxjs/toolkit"
 import {
-   onUserLogin
+   onUserLogin,
+   onGetLoggedUser,
    // onUserLogout,
    // onUpdateUserStatus,
    // onCreateOrUpdateBubble,
@@ -22,7 +23,9 @@ import {
 // }
 
 export const loginReducer = createReducer(
-   { isAuthenticated: false
+   { isAuthenticated: false,
+      user:{},
+      accessToken:{}
       // user: {
       //    id: 1,
       //    firstName: "John",
@@ -35,6 +38,9 @@ export const loginReducer = createReducer(
       [onUserLogin.type]: (state) => {
          return { ...state, isAuthenticated: true}
       },
+      [onGetLoggedUser.type]: (state, {payload: user}) =>{
+         return {...state, user}
+      }
    }
 )
 // const loginReducer = (state = initialState => {

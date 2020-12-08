@@ -5,9 +5,11 @@ import "./login.css"
 import { setAuthenticationHeader } from "../../utils/Auth";
 import axios from "axios";
 import { useHistory } from "react-router-dom"
+import GetUserBubbles from "../../Bubbles/use-cases/getUserBubbles";
+import GetLoggedInUser from "../use-cases/getLoggedInUser";
 // import {SendLogin} from '../use-cases/user-login'
 
-function Login(props) {
+function Login(props, getUser) {
     const [fields, setFields] = useState({})
     const history = useHistory();
 
@@ -32,6 +34,7 @@ function Login(props) {
                 localStorage.setItem("jsonwebtoken", token);
                 setAuthenticationHeader(token);
                 props.onAuthenticated();
+                props.getUser(fields);
                 alert(response.data.message);
                 history.push("/");
             } else {
@@ -110,6 +113,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         // onAuthenticated: () => dispatch(actionCreators.authenticated(true)),
         // onAuthenticated: () => dispatch(true)  isAuthenticated: true  
+        getUser: GetLoggedInUser(dispatch),
         onAuthenticated: () => dispatch({type: 'user.login'})  
     }
 //         onUserLogin: SendLogin(dispatch)
