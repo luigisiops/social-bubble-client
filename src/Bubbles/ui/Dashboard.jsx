@@ -17,6 +17,7 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, u
    const [fields, setFields] = useState({})
    const [userStatus, setUserStatus] = useState('green')
    const [statusText, setStatusText] = useState('Healthy')
+   console.log(user.user.id)
 
    let status = user.user.user_status
    
