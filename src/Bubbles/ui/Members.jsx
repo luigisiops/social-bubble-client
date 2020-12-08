@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from "react-router-dom"
+import React, {  useEffect, useState } from 'react'
+import { Link, useParams,} from "react-router-dom"
 import {connect} from "react-redux"
 import {GetBubbleUsers} from '../use-cases/getBubbleUsers'
 import { Button, Card, Image } from 'semantic-ui-react'
@@ -9,11 +9,11 @@ import Nav from "../../Login/ui/nav"
 
 
 export const Members = ({getBubbleUsers, bubbleUsers}) => {
-    const bubbleId = 2
-    console.log(bubbleUsers.byId)
+  const bubbleId = parseInt(useParams().bubbleId)
+  console.log(bubbleUsers.byId)
 
     useEffect(()=> {
-        getBubbleUsers(8)
+        getBubbleUsers(bubbleId)
     },[])
 
     if (bubbleUsers.byId === []) {

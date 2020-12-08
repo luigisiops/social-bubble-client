@@ -8,7 +8,7 @@ export const GetBubbleUsers = (dispatch) => async (
     const bubbleId = { id: bubble }
 
 
-    const response = await fetch(`http://localhost:8080/bubble/13/users`, {
+    const response = await fetch(`http://localhost:8080/bubble/${bubble}/users`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
