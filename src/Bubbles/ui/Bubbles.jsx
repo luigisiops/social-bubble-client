@@ -9,11 +9,12 @@ import Nav from "../../Login/ui/nav"
 
 import { GetBubblePosts } from "../use-cases/getBubblePosts"
 import { GetBubbleUsers } from "../use-cases/getBubbleUsers"
+import {DeleteBubble} from "../use-cases/deleteBubble"
 import { user } from '../framework/reducer'
 
 
 
-export const Bubbles = ({ getPosts, getBubbleUsers, posts, user, bubble }) => {
+export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, posts, user, bubble }) => {
     const test = { name: 'John Smith', date: '9/10/2020', post: 'Some random test post about an activity' }
     const bubbleId = parseInt(useParams().bubbleId)
     console.log(bubbleId)
@@ -37,6 +38,9 @@ export const Bubbles = ({ getPosts, getBubbleUsers, posts, user, bubble }) => {
                             <h1 className="bubble-title">{item.title}</h1>)
                     }
                 })}
+
+                <Button secondary onClick = {() => {deleteBubble(bubbleId)}}>Delete Bubble?</Button>
+
                 <div className="toggle">
                     <Button primary color='blue'>Activities</Button>
                     <Link to={`/members/${bubbleId}`}><Button className="links" primary color='blue'>Members</Button></Link>
@@ -90,7 +94,8 @@ const mapStateToProps = (state, { posts }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     getPosts: GetBubblePosts(dispatch),
-    getBubbleUsers: GetBubbleUsers(dispatch)
+    getBubbleUsers: GetBubbleUsers(dispatch),
+    deleteBubble : DeleteBubble(dispatch)
 })
 
 
