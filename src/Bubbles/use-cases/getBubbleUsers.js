@@ -1,14 +1,14 @@
 import { onGetBubbleUsers } from '../framework/actions'
 
-const GetBubbleUsers = (dispatch) => async (
+export const GetBubbleUsers = (dispatch) => async (
     bubble
 ) => {
 
     //const bubbleId = bubble.id
-    // const bubbleId = { id: bubble }
+    const bubbleId = { id: bubble }
 
 
-    const response = await fetch(`http://localhost:8080/bubble/10/users`, {
+    const response = await fetch(`http://localhost:8080/bubble/13/users`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -20,4 +20,4 @@ const GetBubbleUsers = (dispatch) => async (
     return dispatch(onGetBubbleUsers(bubbleUsers))
 }
 
-export {GetBubbleUsers}
+export default GetBubbleUsers

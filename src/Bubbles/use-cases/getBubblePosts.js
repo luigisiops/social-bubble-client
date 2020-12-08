@@ -1,11 +1,12 @@
 import {onGetBubblePosts} from '../framework/actions'
 
-const GetBubblePosts = (dispatch) => async(
+export const GetBubblePosts = (dispatch) => async(
     bubble
 ) => {
-    // const bubbleId = {id: bubble.id}
+    const bubbleId = {id: bubble.id}
+    console.log('djfhkaf')
 
-    const response = await fetch(`http://localhost:8080/post/8`, {
+    const response = await fetch(`http://localhost:8080/post/2`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -16,4 +17,4 @@ const GetBubblePosts = (dispatch) => async(
     return dispatch(onGetBubblePosts(posts))
 }
 
-export {GetBubblePosts}
+export default GetBubblePosts

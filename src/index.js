@@ -6,20 +6,24 @@ import { loginReducer } from './Login/framework/reducer'
 import {
     bubble,
     bubbleUsers,
-    bubblePosts
+    bubblePosts,
+    user
 } from './Bubbles/framework/reducer'
 import { Provider } from "react-redux"
 // import store from "./common/redux/store"
 import thunk from "redux-thunk";
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { BrowserRouter as Router } from "react-router-dom"
+import 'semantic-ui-css/semantic.min.css'
+
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
     loginReducer: loginReducer,
-    bubbleReducer: bubble,
-    bubbleUsersReducer: bubbleUsers,
-    bubblePostsReducer: bubblePosts,
+    bubble: bubble,
+    bubbleUsers: bubbleUsers,
+    bubblePosts: bubblePosts,
+    user: user
 })
 
 const store = createStore(

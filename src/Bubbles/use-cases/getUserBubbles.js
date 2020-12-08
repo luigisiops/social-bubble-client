@@ -1,10 +1,10 @@
 import {onGetBubbles} from '../framework/actions'
 
-const GetUserBubbles = (dispatch) => async(
+export const GetUserBubbles = (dispatch) => async(
     user
 ) => {
     
-    // const userId = {id: user.id}
+    const userId = {id: user.id}
 
     const response = await fetch(`http://localhost:8080/user/10/bubbles`,{
         method: 'GET',
@@ -12,9 +12,9 @@ const GetUserBubbles = (dispatch) => async(
           'Content-Type': 'application/json'
         }, 
       })
-    
+    console.log('testing bubbles work?')
     let bubble = await response.json()
     return dispatch(onGetBubbles(bubble))
     }
 
-export { GetUserBubbles }
+export default GetUserBubbles

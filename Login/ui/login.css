@@ -51,6 +51,8 @@
         color: white;
         background-color: transparent;
         border: 1px white solid;
+        border-radius: 8px;
+        margin-bottom: 10px;
     }
     
     .signIn-button:hover{
@@ -65,6 +67,20 @@
         -webkit-transition-property: color, background-color;
         transition-property: color, background-color;
     }    
+
+    .signup-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .signup-hyperlink {
+        text-decoration: none;
+    }
+
+    .signup-text {
+        margin: 0;
+    }
 }
 
 @media (min-width: 426px) {
@@ -147,5 +163,13 @@
     .signIn-button:link {
         text-decoration: none;
     }
+
+    .signup-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    
 }
 

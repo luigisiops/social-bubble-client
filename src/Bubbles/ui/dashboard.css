@@ -1,4 +1,4 @@
-* {
+*{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -8,17 +8,69 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top:15px;
-    color: white;
-    background-color: rgb(81, 163, 211);
+    background: rgb(248, 248, 248);
+    color: black;
     height: 100vh;
+    background:  rgb(81, 163, 211);
 }
+
+.nav-component-container {
+    color: white !important;
+}
+
 .dashboard-username {
     margin-top: 25px;
     font-family: 'Passion One';
     font-weight: 700;
     font-size: 54px;
 }
+
+.nav-item-container {
+    color: white;
+}
+
+.nav-container a {
+    background: rgb(0, 111, 176);
+    border: none;
+    outline: none;
+    color: #eee;
+}
+
+.select-status {
+    width: 80%;
+}
+
+.user-status-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.user-status-container select {
+    margin-bottom: 5px;
+    width: 100%;
+    outline: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    padding: 3px;
+}
+
+
+.green {
+    color: rgb(29, 230, 29) !important;
+}
+
+.yellow {
+    color: rgb(255, 255, 0) !important;
+}
+
+.red {
+    color: rgb(223, 0, 0) !important;
+}
+
+
 
 .profile-image {
     margin-top: 30px;
@@ -27,12 +79,22 @@
     border-radius: 50%;
 }
 
+.image-green {
+    border: 6px solid rgb(29, 230, 29);
+}
+.image-yellow {
+    border: 6px solid rgb(255, 255, 0);
+}
+.image-red {
+    border: 6px solid rgb(223, 0, 0);
+}
+
 .dashboard-status {
     font-family: 'Roboto';
     margin-top: 10px;
+    margin-bottom: 10px;
     font-size: 20px;
     font-weight: 700;
-    color: yellow
 }
 
 .status-input {
@@ -48,8 +110,8 @@
     width: 150px;
     height: 40px;
     background: transparent;
-    color: white;
-    border: 1px solid white; 
+    color: black;
+    border: 1px solid black; 
     font-size: 14px;
     border-radius: 3px;
 }
@@ -62,9 +124,19 @@
     width: 100vw;
     padding-left:10px;
     margin-top: 20px;
+    margin-bottom: 10px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.473) ;
     font-size: 20px;
 }
+
+.bubble-lists-title {
+    font-size: 2em;
+    color: white;
+    font-family: 'Passion One';
+    display: flex;
+}
+
+
 
 .bubble-item {
     display: flex;
@@ -74,7 +146,6 @@
     background: white;
     font-size: 24px;
     color: black;
-    border: 1.5px solid grey;
     width: 250px;
     height: 50px;
     border-radius: 3px;
@@ -82,9 +153,27 @@
     margin-bottom: 10px;
 }
 
+.bubble-item-container {
+    background: red;
+}
+
 .add-to-bubble{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+}
+
+.dashboard-username {
+    margin-top: 25px;
+    font-family: 'Passion One';
+    font-weight: 700;
+    font-size: 54px;
+    color: white;
+}
+
+.card-headers{
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
 }

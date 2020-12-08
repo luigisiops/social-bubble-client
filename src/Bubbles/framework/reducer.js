@@ -4,8 +4,29 @@ import {
     onGetBubblePosts,
     onGetBubbles,
     onGetBubbleUsers,
-    onAddBubbles
+    onAddBubbles,
+    onDeleteBubble,
+    onUpdateUserStatus,
 } from "./actions"
+
+export const user = createReducer(
+    {
+        user: {
+            id: 1,
+            firstName: "John",
+            lastName: "Smith",
+            email: "johnsmith@email.com",
+            password: "password",
+            user_status:"green"
+         }
+    },
+
+    {
+        [onUpdateUserStatus.type] : (state, {payload: user}) => {
+            return {...state, user}
+        }
+    },
+)
 
 export const bubble = createReducer(
     {
@@ -14,7 +35,10 @@ export const bubble = createReducer(
 
     {
         [onAddBubbles.type]: (state, { payload: bubbleList }) => {
-            return { ...state, bubbleList }
+            return { ...state, bubbleList: [
+                ...state.bubbleList,
+                bubbleList
+            ] }
         },
 
         [onGetBubbles.type]: (state, { payload: bubbleList }) => {
@@ -26,15 +50,11 @@ export const bubble = createReducer(
 
 export const bubbleUsers = createReducer(
     {
-        byId: {},
-        byUserId: {},
-        byBubbleId: {},
+        byId: [],
     },
     {
-        [onGetBubbleUsers.type]: (state, { payload: bubbleUsers }) => {
-            bubbleUsers.forEach((item) => {
-                state.byId[item.id] = item
-            })
+        [onGetBubbleUsers.type]: (state, { payload: byId }) => {
+            return {...state, byId}
         }
     }
 
@@ -42,7 +62,7 @@ export const bubbleUsers = createReducer(
 
 export const bubblePosts = createReducer(
     {
-        posts: {},
+        posts: [],
     },
 
     {
@@ -53,4 +73,4 @@ export const bubblePosts = createReducer(
     }
 )
 
-// export { bubblePosts, bubble, bubbleUsers }
+export default { bubblePosts, bubble, bubbleUsers, user }
