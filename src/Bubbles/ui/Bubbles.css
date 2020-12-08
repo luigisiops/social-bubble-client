@@ -1,0 +1,76 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.bubbles-container {
+    display: flex;
+    flex-direction: column;
+    font-family: "Roboto";
+    align-items: center;
+    padding-top:15px;
+    color: white;
+    background-color: rgb(81, 163, 211);
+    height: 100vh;
+}
+
+.bubble-title {
+    font-family: 'Passion One';
+    font-weight: 700;
+    font-size: 48px;
+}
+
+.toggle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.links {
+    font-size: 18px;
+    margin-top: 10px ;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.bubble-status{
+    margin-top: 20px;
+    color: red;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.user-post{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    margin-top: 20px; 
+    border-bottom: 1px solid white ;
+}
+
+.name-date{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 10px;
+    margin-right: 10px; 
+}
+
+.username, .date {
+    font-weight: bold;
+}
+
+.profile-pic {
+    margin-left: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.post-content {
+    margin-top: 5px;
+    margin-left:10px;
+    margin-bottom: 10px;
+}
+

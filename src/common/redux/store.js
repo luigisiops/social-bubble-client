@@ -1,14 +1,21 @@
-import { combineReducers, createStore } from "redux"
 import { configureStore } from '@reduxjs/toolkit'
+import { loginReducer } from '../../Login/framework/reducer'
 
-const reducers = {
-//need to set
+import {
+    bubble,
+    bubbleUsers,
+    bubblePosts
+} from '../../Bubbles/framework/reducer'
+
+const combineReducers = {
+    loginReducer,
+    bubble,
+    bubbleUsers,
+    bubblePosts,
 }
 
-const rootReducer = combineReducers(reducers)
-
 const store = configureStore({
-    reducer: reducers,
+    reducer: combineReducers
 })
 
 export default store
