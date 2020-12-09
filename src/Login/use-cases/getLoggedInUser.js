@@ -1,6 +1,6 @@
 import {onGetLoggedUser} from '../framework/actions'
 
-export const getLoggedInUser = (dispatch) => async(
+export const GetLoggedInUser = (dispatch) => async(
     user
 ) => {
     console.log(user)
@@ -17,4 +17,4 @@ export const getLoggedInUser = (dispatch) => async(
     return dispatch(onGetLoggedUser(userResponse))
 
     }
-export default getLoggedInUser
+export default GetLoggedInUser

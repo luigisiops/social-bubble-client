@@ -13,9 +13,10 @@ import Navbar from "../../Navbar/Navbar"
 
 export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, updateUserStatus, user}) => {
    let status = user.user.user_status
+   let userId = user.user.id
+   console.log(user)
 
-
-   const [loading, setLoading] = useState(true)
+   const [loading, setLoading] = useState(userId)
    const [adding, setAdding] = useState(false)
    const [fields, setFields] = useState({})
    const [userStatus, setUserStatus] = useState(status)
@@ -46,23 +47,23 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, u
    console.log(bubbles.bubbleList)
 
    useEffect(() => {
-      getBubbles(user.user.id)
+      if(userId){
+         setLoading(userId)
+         getBubbles(user.user.id)
+      }
+
    }, [])
 
-
-   if (bubbles.bubbleList === []) {
-   }
-
-   else {
       const list = bubbles.bubbleList
-      const userId = user.user.id
       
       const handleUpdateStatus = (evt) => {         
          setUserStatus(evt.target.value)
          
       }
+      
       let width = window.innerWidth
       if (width > 768){
+
       return (
          <div class="box">
             <Navbar />
@@ -109,7 +110,8 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, u
 
             <div className="bubble-lists "> <h1 className="bubble-lists-title">Your Bubbles</h1> </div>
             <div class="list">
-               {list.map((item) => (
+               {userId ? 
+                  list.map((item) => (
                   <Link to = {`/bubbles/${item.id}`} > 
                      <Card
                         key={item.id}
@@ -123,7 +125,9 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, u
                      </Card>
                   </Link>
          
-               ))}
+               ))
+               :
+               <div>Loading...</div>}
             </div>
          </div>
          </div>
@@ -197,9 +201,8 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, u
    }
 
 
-}
 
-const mapStateToProps = (state, { bubbles }) => ({
+const mapStateToProps = (state, { bubbles, user }) => ({
    bubbles: state.bubble,
    user: state.user
 })
