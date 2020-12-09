@@ -10,7 +10,7 @@
     align-items: center;
     background: rgb(248, 248, 248);
     color: black;
-    height: 100vh;
+    height: 92vh;
     background:  rgb(81, 163, 211);
 }
 
@@ -139,7 +139,7 @@
     font-family: 'Roboto';
     display: inherit;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     width: 100vw;
     padding-left:10px;
     margin-top: 20px;
@@ -153,6 +153,7 @@
     color: white;
     font-family: 'Passion One';
     display: flex;
+
 }
 
 
