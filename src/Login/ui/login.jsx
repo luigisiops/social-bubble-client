@@ -80,6 +80,7 @@ function Login(props, getUser) {
                             onChange={setField}>
                         </input>
                     </div>
+                    
                     <div className="password-container">
                         <label>Password</label>
                         <input className="password-input"
