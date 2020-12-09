@@ -39,6 +39,7 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, posts, user, b
                             <h1 className="bubble-title">{item.title}</h1>)
                     }
                 })}
+                
                 <div className='delete-button'>
                     <Button negative  onClick = {() => {deleteBubble(bubbleId)}}>Delete Bubble?</Button>
                 </div>
