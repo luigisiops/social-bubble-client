@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Moment from 'react-moment'
 import { Link, useParams } from "react-router-dom"
 import { connect } from "react-redux"
-import { Comment, Icon, Button } from 'semantic-ui-react'
+import { Comment, Icon, Button, Input} from 'semantic-ui-react'
 import './Bubbles.css'
 
 import Nav from "../../Login/ui/nav"
@@ -62,12 +62,13 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
                         </div>
                         <div className="bubble-status">This bubble is at risk!</div>
 
-                        <input
+                        <Input 
                             name="body"
                             type="text"
+                            placeholder = "Create Post"
                             onChange={setField}>
-                        </input>
-                        <button onClick ={() => {addBubblePost(user.user.id, fields)}}>Add Post</button>
+                        </Input>
+                        <Button id="addbutton" primary onClick ={() => {addBubblePost(user.user.id, fields)}}>Add Post</Button>
 
                         {posts.posts.map((post) => (
                             <div className="user-posts">

@@ -90,7 +90,7 @@ function Login(props, getUser) {
                             onChange={setField}>
                         </input>
                     </div>
-                    <button
+                    <button className="signIn-button"
                     onClick={performLoginRequest}
                     // type="submit"
                     // className="loginButton"
@@ -101,7 +101,7 @@ function Login(props, getUser) {
             </div>
         
             <div className="signup-link">
-                <p>Not a user?<NavLink to="/register">Register</NavLink></p>
+                <p>Not a user?<NavLink to="/register"> Register</NavLink></p>
             </div>
         </div>
     )
