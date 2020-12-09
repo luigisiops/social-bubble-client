@@ -16,9 +16,11 @@ import { AddBubblePost } from '../use-cases/addBubblePost'
 
 
 export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost, posts, user, bubble }) => {
-    const [fields, setFields] = useState({})
-    const [title, setTitle] = useState({})
+    const bubbleId = parseInt(useParams().bubbleId)
+    const userId = user.user.id
+    let bubbleStatus = bubble.byId[bubbleId].bubble_status
 
+    const [fields, setFields] = useState({})
     const setField = (evt) => {
         setFields({
             ...fields,
@@ -26,17 +28,45 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
         })
     }
 
+    const [status, setStatus] = useState(bubbleStatus)
+    const [statusText, setStatusText] = useState('')
+    
+    var statusComponent;
+    if (status === 'green') {
+        let statusText = "This bubble is safe!"
+        statusComponent = <div className = "bubble-status-green">{statusText}</div>
+        } 
+    else if (status === 'yellow') {
+        let statusText = "One or more members are at risk!"
+        statusComponent = <div className = "bubble-status-yellow">{statusText}</div>
+
+    } else if (status === 'red') {
+        let statusText = "One or more members are sick!"
+        statusComponent = <div className = "bubble-status-red">{statusText}</div>
+        }
+
     const test = { name: 'John Smith', date: '9/10/2020', post: 'Some random test post about an activity' }
-    const bubbleId = parseInt(useParams().bubbleId)
-    const userId = user.user.id
+
     console.log(userId)
     console.log(bubbleId)
+    console.log(bubble.byId)
     useEffect(() => {
         getPosts(bubbleId)
         getBubbleUsers(bubbleId)
-        setTitle(bubble)
-
     }, [])
+    //creating options for displaying bubble risk:
+
+    const handleBubbleStatus = () => {
+        if (bubbleStatus === "green") {
+            setStatus('This bubble is safe')
+        }
+        else if (bubbleStatus === "yellow"){
+            setStatus('One or more members is at risk')
+        }
+        else if (bubbleStatus === "red"){
+            setStatus('One or more members is sick')
+        }
+    }
 
     //need to grab posts info and display it and create action for adding and deleting posts
 //    console.log(posts.posts)
@@ -49,7 +79,7 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
                 <div>
                     <Navbar />
                     <div className="bubbles-container">
-                        {bubble.map(item => {
+                        {bubble.bubbleList.map(item => {
                             if (bubbleId === item.id) {
                                 return (
                                     <h1 className="bubble-title">{item.title}</h1>)
@@ -62,25 +92,16 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
                             <Link to={`/members/${bubbleId}`}><Button className="links button-width" primary color='blue'>Members</Button></Link>
 
                         </div>
-                        <div className="bubble-status">This bubble is at risk!</div>
 
-<<<<<<< HEAD
-                        <div className = "post-input-label">hello</div>
-                        <input
-=======
+                            <div className="bubble-status"> {statusComponent} </div>                          
+
                         <Input 
->>>>>>> c0934c99fe5990f2557595549bd7e878f9067eac
                             name="body"
                             type="text"
                             placeholder = "Create Post"
                             onChange={setField}>
-<<<<<<< HEAD
-                        </input>
-                        <button onClick ={() => {addBubblePost(userId, fields)}}>Add Post</button>
-=======
                         </Input>
                         <Button id="addbutton" primary onClick ={() => {addBubblePost(user.user.id, fields)}}>Add Post</Button>
->>>>>>> c0934c99fe5990f2557595549bd7e878f9067eac
 
                         {posts.posts.map((post) => (
                             <div className="user-posts">
@@ -118,7 +139,7 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
             return (
                 <div>
                     <div className="bubbles-container">
-                        {bubble.map(item => {
+                        {bubble.bubbleList.map(item => {
                             if (bubbleId === item.id) {
                                 return (
                                     <h1 className="bubble-title">{item.title}</h1>)
@@ -182,7 +203,7 @@ const mapStateToProps = (state, { posts }) => ({
     posts: state.bubblePosts,
     bubbleUsers: state.bubbleUsers,
     user: state.user,
-    bubble: state.bubble.bubbleList,
+    bubble: state.bubble,
 })
 
 const mapDispatchToProps = (dispatch) => ({

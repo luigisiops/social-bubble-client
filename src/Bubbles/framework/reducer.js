@@ -2,7 +2,7 @@ import { createReducer } from "@reduxjs/toolkit"
 
 import {
     onGetBubblePosts,
-    onAddBubblePost,    
+    onAddBubblePost,
     onGetBubbles,
     onGetBubbleUsers,
     onAddBubbles,
@@ -12,29 +12,35 @@ import {
 export const bubble = createReducer(
     {
         bubbleList: [],
+        byId: {},
     },
 
     {
         [onAddBubbles.type]: (state, { payload: bubbleList }) => {
-            return { ...state, bubbleList: [
-                ...state.bubbleList,
-                bubbleList
-            ] }
+
+            if (bubbleList == null || bubbleList.length === 0) {
+                return state
+            }
+                state.byId[bubbleList.id] = bubbleList
+                state.bubbleList = [...state.bubbleList, bubbleList]
         },
 
         [onGetBubbles.type]: (state, { payload: bubbleList }) => {
-            return { ...state, bubbleList }
-        },
+            bubbleList.forEach((item) => {
+                state.byId[item.id] = item
+              })
+              state.bubbleList = bubbleList
+            },
 
-        [onDeleteBubble.type] : (state, {payload: bubbleId}) => {
+        [onDeleteBubble.type]: (state, { payload: bubbleId }) => {
             let arr = state.bubbleList
             let bubbleList = []
             arr.forEach((element) => {
-                if (element.id !== bubbleId){
+                if (element.id !== bubbleId) {
                     bubbleList.push(element)
                 }
             })
-            return { ...state, bubbleList}
+            return { ...state, bubbleList }
         }
 
     }
@@ -46,7 +52,7 @@ export const bubbleUsers = createReducer(
     },
     {
         [onGetBubbleUsers.type]: (state, { payload: byId }) => {
-            return {...state, byId}
+            return { ...state, byId }
         }
     }
 
@@ -60,10 +66,12 @@ export const bubblePosts = createReducer(
         [onGetBubblePosts.type]: (state, { payload: posts }) => {
             return { ...state, posts }
         },
-        [onAddBubblePost.type]: (state, {payload: post}) =>{
-            return { ...state, posts:[
-                ...state.posts, post
-            ]}
+        [onAddBubblePost.type]: (state, { payload: post }) => {
+            return {
+                ...state, posts: [
+                    ...state.posts, post
+                ]
+            }
         }
 
     }
