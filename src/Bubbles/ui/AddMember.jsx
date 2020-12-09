@@ -17,30 +17,53 @@ export const AddMember = ({addMember}) => {
       ...fields,
       [evt.target.name]: evt.target.value
    })
-console.log(fields)
-
+   let width = window.innerWidth
+   if (width > 768){
    return (
       <div>
       <Navbar class="Nav"></Navbar>
       <div className="addMember-container">
           
-          <div>
-             <h1> Add Member</h1>
+          <div class="div1">
+             <h1 class="bubble-title"> Add Member</h1>
          </div>
-          <div> 
-             <label>User's Email:</label>
+          <div class="div2"> 
+             <label class="bubble-text">User's Email:</label>
           </div>
-          <div>
-            <input type="text" placeholder="Email Address" value={fields.email} onChange={setField}/>
+          <div class="div3">
+            <Input type="text" placeholder="Email Address" value={fields.email} onChange={setField}/>
           </div> 
           <div>
-            <Button onClick={() => addMember(fields, bubbleId)} basic color='green'>
+            <Button onClick={() => addMember(fields, bubbleId)} primary color="blue">
             Add Member
             </Button>
          </div> 
       </div>
       </div>
-   )
+   )} else {
+      return (
+         <div>
+         <div className="addMember-container">
+             
+             <div class="div1">
+                <h1 class="bubble-title"> Add Member</h1>
+            </div>
+             <div class="div2"> 
+                <label class="bubble-text">User's Email:</label>
+             </div>
+             <div class="div3">
+               <Input type="text" placeholder="Email Address" value={fields.email} onChange={setField}/>
+             </div> 
+             <div>
+               <Button onClick={() => addMember(fields, bubbleId)} primary color="blue">
+               Add Member
+               </Button>
+            </div> 
+         </div>
+         <Navbar class="Nav"></Navbar>
+         </div>
+   
+      )}
 }
 
 const mapDispatchToProps = (dispatch) => ({

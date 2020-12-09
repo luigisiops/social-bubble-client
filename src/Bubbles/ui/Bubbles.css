@@ -11,7 +11,7 @@
     align-items: center;
     color: white;
     background: rgb(81, 163, 211);
-    height: 100vh;
+    height: 92vh;
 }
 
 .delete-button {
@@ -28,6 +28,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 4em;
 }
 
 .links {
@@ -35,6 +36,10 @@
     margin-top: 10px ;
     margin-right: 40px;
     margin-left: 40px;
+}
+
+.button-width{
+    width: 100px
 }
 
 .bubble-status{
@@ -77,3 +82,8 @@
     margin-bottom: 10px;
 }
 
+@media (max-width: 425px){
+    .bubbles-container{
+        justify-content: center;
+    }
+}

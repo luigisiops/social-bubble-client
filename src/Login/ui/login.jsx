@@ -36,7 +36,7 @@ function Login(props, getUser) {
                 props.onAuthenticated();
                 props.getUser(fields);
                 alert(response.data.message);
-                history.push("/");
+                history.push("/dashboard");
             } else {
                 alert(response.data.message);
                 alert("response failed");
