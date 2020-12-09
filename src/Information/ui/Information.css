@@ -1,7 +1,46 @@
+#root {
+   height: 100%;
+
+}
+
 #info-container {
    display: flex;
    flex-direction: column;
    align-items: center;
+   background: rgb(81, 163, 211);
+   color: white;
+   height: 100%;
+   width: auto;
+   overflow: scroll;
+}
+
+.statistics-container {
+   margin-top: 50px;
+   display: flex;
+   justify-content: space-between;
+   width: 80%;
+   font-weight: 900;
+   font-size: 2em;
+   color: white;
+}
+
+.statistic {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+.value {
+   margin-bottom: 10px;
+   font-weight: 600;
+   color: rgb(0, 57, 91);
+}
+
+#protect-title {
+   font-size: 3.5em;
+   margin-top: 50px;
+   margin-bottom: 50px;
 }
 
 .infographics {
@@ -11,4 +50,56 @@
 
 #carousel {
    width: 40%;
+}
+
+.links-title {
+   font-size: 3.5em;
+   margin-top: 50px;
+}
+
+.link-item {
+   color: white;
+   text-decoration: none;
+   font-size: 1.5em;
+   margin: 20px;
+}
+.link-item:hover {
+   color: rgb(0, 57, 91);
+}
+
+@media (max-width: 425px) {
+   .statistics-container {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 80%;
+      font-weight: 900;
+      font-size: 1.5em;
+      color: white;
+   }
+   .statistic {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+   }
+
+   .value {
+      margin-bottom: 0;
+      font-weight: 600;
+   }
+
+   .links-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+   }
+
+   .links-list {
+      font-size: 1em;
+      margin: 0 25px;
+   }
 }

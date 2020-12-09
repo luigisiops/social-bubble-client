@@ -42,7 +42,7 @@ export const Information = () => {
             <Navbar />
          </div>
 
-         <div class="ui statistics">
+         <div class="ui statistics-container">
             <div class="statistic">
                <div class="value">{covidData.TotalConfirmed}</div>
                <div class="label">Total Confirmed Cases</div>
@@ -57,7 +57,7 @@ export const Information = () => {
             </div>
          </div>
 
-         <h1 id="protect-h1">Protect Yourself!</h1>
+         <h1 id="protect-title">Protect Yourself!</h1>
          <div id="carousel">
             <Carousel showArrows={true}>
                <div>
@@ -79,6 +79,32 @@ export const Information = () => {
                   <img className="infographics" src={info6} />
                </div>
             </Carousel>
+         </div>
+
+         <div className="links-container">
+
+            <h1 className="links-title">Useful Links</h1>
+            <ul className='links-list'>
+
+               <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019" target="_blank"><li className='link-item'>World Health Organization (WHO)
+               </li></a>
+
+               <a href="https://www.cdc.gov/coronavirus/2019-ncov/index.html" target="_blank"><li className='link-item'>Centers for Disease Control (CDC)
+               </li></a>
+
+               <a href="https://www.nih.gov/coronavirus" target="_blank"><li className='link-item'>National Institues of Healt (NIH)
+               </li></a>
+
+               <a href="https://covid19.census.gov/" target="_blank"><li className='link-item'>United States Census Bureau (COVID-19)
+               </li></a>
+
+               <a href="https://coronavirus.jhu.edu/" target="_blank"><li className='link-item'>Johns Hopkins - Coronavirus Resource Center
+               </li></a>
+
+               
+               
+            </ul>
+
          </div>
       </div>
    )
