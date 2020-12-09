@@ -1,17 +1,17 @@
 import {onAddBubblePost} from '../framework/actions'
 
 export const AddBubblePost = (dispatch) => async(
-    userId, post
+    userId, fields
 ) => {
 
-    const postReq = {user_id: userId, body: post }
+    const post = {user_id: userId, body: fields }
 
-    const response = await fetch(`http://localhost:8080/post/${postReq.user_id}/users`, {
+    const response = await fetch(`http://localhost:8080/post/${post.user_id}/users`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body:JSON.stringify(postReq.body)
+        body:JSON.stringify(post.body)
     })
 
     let userPost = await response.json()
