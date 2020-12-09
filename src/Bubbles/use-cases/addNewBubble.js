@@ -17,8 +17,9 @@ export const AddNewBubble = (dispatch) => async(
     })
     console.log(title)
     
-    //let bubble = await response.json()
-    return dispatch(onAddBubbles(test))
+    let test = await response.json()
+    
+return dispatch(onAddBubbles(test))
 
   }
 export default AddNewBubble

@@ -6,6 +6,7 @@ import { Comment, Icon, Button } from 'semantic-ui-react'
 import './Bubbles.css'
 
 import Nav from "../../Login/ui/nav"
+import Navbar from "../../Navbar/Navbar"
 
 import { GetBubblePosts } from "../use-cases/getBubblePosts"
 import { GetBubbleUsers } from "../use-cases/getBubbleUsers"
@@ -31,15 +32,18 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, posts, user, b
     else {
         return (
             <div className="bubbles-container">
-                <Nav />
+                <Navbar />
                 {bubble.map(item => {
                     if (bubbleId === item.id) {
                         return (
                             <h1 className="bubble-title">{item.title}</h1>)
                     }
                 })}
-
-                <Button secondary onClick = {() => {deleteBubble(bubbleId)}}>Delete Bubble?</Button>
+                
+                <div className='delete-button'>
+                    <Button negative  onClick = {() => {deleteBubble(bubbleId)}}>Delete Bubble?</Button>
+                </div>
+                
 
                 <div className="toggle">
                     <Button primary color='blue'>Activities</Button>
