@@ -56,7 +56,7 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
 
 
                         <div className="toggle">
-                            <Link to={`/members/${bubbleId}}`}><Button primary color='blue' className="links button-width">Feed</Button></Link>
+                            <Link to = {`/bubbles/${bubbleId}}`}><Button className="links button-width" primary >Feed</Button></Link>
                             <Link to={`/members/${bubbleId}`}><Button className="links button-width" primary color='blue'>Members</Button></Link>
 
                         </div>
@@ -115,7 +115,7 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
 
 
                         <div className="toggle">
-                            <Link to={`/members/${bubbleId}}`}><Button primary color='blue' className="links button-width">Feed</Button></Link>
+                            <Link to = {`/bubbles/${bubbleId}}`}><Button className="links button-width" primary >Feed</Button></Link>
                             <Link to={`/members/${bubbleId}`}><Button className="links button-width" primary color='blue'>Members</Button></Link>
 
                         </div>

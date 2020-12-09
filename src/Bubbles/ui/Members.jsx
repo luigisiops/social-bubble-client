@@ -30,7 +30,7 @@ export const Members = ({getBubbleUsers, bubbleUsers}) => {
                 
                 <h1 className="bubble-title">Family</h1>
                 <div className="toggle">
-                <Link to = {`/bubbles/${bubbleId}}`}><Button className="links button-width" primary >Feed</Button> </Link>
+                <Link to = {`/bubbles/${bubbleId}}`}><Button className="links button-width" primary >Feed</Button></Link>
                 <Link to ={`/members/${bubbleId}}`}><Button className="links button-width" primary >Members</Button></Link>
     
                 </div>
