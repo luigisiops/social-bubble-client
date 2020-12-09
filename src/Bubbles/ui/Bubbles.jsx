@@ -12,10 +12,11 @@ import { GetBubblePosts } from "../use-cases/getBubblePosts"
 import { GetBubbleUsers } from "../use-cases/getBubbleUsers"
 import { DeleteBubble } from "../use-cases/deleteBubble"
 import { AddBubblePost } from '../use-cases/addBubblePost'
+import { DeleteBubblePost} from "../use-cases/deleteBubblePost"
 
 
 
-export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost, posts, user, bubble }) => {
+export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost, deleteBubblePost, posts, user, bubble }) => {
     const bubbleId = parseInt(useParams().bubbleId)
     const userId = user.user.id
     let bubbleStatus = bubble.byId[bubbleId].bubble_status
@@ -96,11 +97,10 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
                             placeholder = "Create Post"
                             onChange={setField}>
                         </Input>
-                        <Button id="addbutton" primary onClick ={() => {addBubblePost(userId, fields, bubbleId)}}>Add Post</Button>
+                        <Button id="addbutton" primary onClick ={() => addBubblePost(userId, fields, bubbleId)}>Add Post</Button>
 
                         {posts.posts.map((post) => (
                             <div className="user-posts">
-
                                 <Comment.Group>
                                     <Comment>
                                         <Comment.Avatar as='a' src='stock-profile.png' />
@@ -111,7 +111,7 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
                                                     <Moment fromNow>{post.Post.createdAt}</Moment>
                                                 </div>
                                                 <div>
-                                                    <Icon name='star'/> 5 Faves
+                                                <Icon onClick = {() => deleteBubblePost(post.PostId)} name='trash'></Icon>
                         </div>
                                             </Comment.Metadata>
                                             <Comment.Text>
@@ -124,7 +124,7 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
                             </div>
                         ))}
                         <div className='delete-button'>
-                            <Button negative onClick={() => { deleteBubble(bubbleId) }}>Delete Bubble?</Button>
+                            <Button negative onClick={() =>  deleteBubble(bubbleId) }>Delete Bubble?</Button>
                         </div>
 
                     </div>
@@ -147,7 +147,16 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
                             <Link to={`/members/${bubbleId}`}><Button className="links button-width" primary color='blue'>Members</Button></Link>
 
                         </div>
-                        <div className="bubble-status">This bubble is at risk!</div>
+                        <div className="bubble-status"> {statusComponent} </div>                          
+
+                        <Input 
+                            name="body"
+                            type="text"
+                            placeholder = "Create Post"
+                            onChange={setField}>
+                        </Input>
+                        <Button id="addbutton" primary onClick ={() => addBubblePost(userId, fields, bubbleId)}>Add Post</Button>
+
                         {posts.posts.map((post) => (
                             <div className="user-posts">
 
@@ -161,7 +170,7 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
                                                     <Moment fromNow>{post.Post.createdAt}</Moment>
                                                 </div>
                                                 <div>
-                                                    <Icon name='star' />5 Faves
+                                                <Icon onClick = {() => deleteBubblePost(post.PostId)} name='trash'></Icon>
                         </div>
                                             </Comment.Metadata>
                                             <Comment.Text>
@@ -206,6 +215,7 @@ const mapDispatchToProps = (dispatch) => ({
     getBubbleUsers: GetBubbleUsers(dispatch),
     deleteBubble: DeleteBubble(dispatch),
     addBubblePost: AddBubblePost(dispatch),
+    deleteBubblePost: DeleteBubblePost(dispatch),
 })
 
 

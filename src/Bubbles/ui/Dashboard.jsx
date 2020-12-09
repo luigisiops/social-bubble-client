@@ -119,7 +119,6 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, u
                      >
                         <div className="card-headers">
                            <Header as='h3'>{item.title}</Header>
-                           <Icon name='trash' ></Icon>
                         </div>
                      </Card>
                   </Link>
@@ -184,7 +183,6 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, u
                         >
                            <div className="card-headers">
                               <Header as='h3'>{item.title}</Header>
-                              <Icon name='trash' ></Icon>
                            </div>
                         </Card>
                      </Link>

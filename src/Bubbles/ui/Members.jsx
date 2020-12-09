@@ -2,16 +2,33 @@ import React, {  useEffect, useState } from 'react'
 import { Link, useParams,} from "react-router-dom"
 import {connect} from "react-redux"
 import {GetBubbleUsers} from '../use-cases/getBubbleUsers'
-import { Button, Card, Image } from 'semantic-ui-react'
+import { Button, Card, Image, Icon} from 'semantic-ui-react'
 import Navbar from '../../Navbar/Navbar'
 import "./Members.css"
 
 
 
 
-export const Members = ({getBubbleUsers, bubbleUsers}) => {
+export const Members = ({getBubbleUsers, bubbleUsers, bubbles, user}) => {
+  let status = user.user.user_status
   const bubbleId = parseInt(useParams().bubbleId)
+  const [userStatus, setUserStatus] = useState(status)
+  const [statusText, setStatusText] = useState('Healthy')
   console.log(bubbleUsers.byId)
+
+      let statusComponent;
+    if (status === 'green') {
+        let statusText = "This bubble is safe!"
+        statusComponent = <div className = "bubble-status-green">{statusText}</div>
+        } 
+    else if (status === 'yellow') {
+        let statusText = "One or more members are at risk!"
+        statusComponent = <div className = "bubble-status-yellow">{statusText}</div>
+
+    } else if (status === 'red') {
+        let statusText = "One or more members are sick!"
+        statusComponent = <div className = "bubble-status-red">{statusText}</div>
+        }
 
     useEffect(()=> {
         getBubbleUsers(bubbleId)
@@ -34,7 +51,7 @@ export const Members = ({getBubbleUsers, bubbleUsers}) => {
                 <Link to ={`/members/${bubbleId}}`}><Button className="links button-width" primary >Members</Button></Link>
     
                 </div>
-                <div className="bubble-status">This bubble is at risk!</div>      
+                <div className="bubble-status">{statusComponent}</div>      
                 {bubbleUsers.byId.map((item) => (
                     
                     <div class="card"> <Card>
@@ -46,16 +63,6 @@ export const Members = ({getBubbleUsers, bubbleUsers}) => {
         />
         <Card.Header>{item.User.first_name + " " + item.User.last_name}</Card.Header>
         <Card.Meta>Member</Card.Meta>
-      </Card.Content>
-      <Card.Content extra>
-        <div className='ui two buttons'>
-          <Button basic color='green'>
-            Approve
-          </Button>
-          <Button basic color='red'>
-            Decline
-          </Button>
-        </div>
       </Card.Content>
     </Card></div>
                 ))}
@@ -89,12 +96,6 @@ export const Members = ({getBubbleUsers, bubbleUsers}) => {
   </Card.Content>
   <Card.Content extra>
     <div className='ui two buttons'>
-      <Button basic color='green'>
-        Approve
-      </Button>
-      <Button basic color='red'>
-        Decline
-      </Button>
     </div>
   </Card.Content>
 </Card></div>
@@ -112,7 +113,9 @@ export const Members = ({getBubbleUsers, bubbleUsers}) => {
 
 
 const mapStateToProps = (state, {users}) => ({
-    bubbleUsers: state.bubbleUsers
+    bubbleUsers: state.bubbleUsers,
+    bubbles: state.bubble,
+    user: state.user
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -3,6 +3,7 @@ import { createReducer } from "@reduxjs/toolkit"
 import {
     onGetBubblePosts,
     onAddBubblePost,
+    onDeleteBubblePost,
     onGetBubbles,
     onGetBubbleUsers,
     onAddBubbles,
@@ -79,12 +80,19 @@ export const bubblePosts = createReducer(
             return { ...state, posts }
         },
         [onAddBubblePost.type]: (state, { payload: post }) => {
-            return {
-                ...state, posts: [
-                    ...state.posts, post
-                ]
-            }
-        }
+            state.posts = [...state.posts, post]
+        },
+
+        [onDeleteBubblePost.type]: (state, { payload: postId }) => {
+            let arr = state.posts
+            let postList = []
+            arr.forEach((element) => {
+                if (element.id !== postId) {
+                    postList.push(element)
+                }
+            })
+            return { ...state, postList }
+        },
 
     }
 )
