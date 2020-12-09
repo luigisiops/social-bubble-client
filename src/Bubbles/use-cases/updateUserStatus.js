@@ -6,8 +6,8 @@ export const UpdateUserStatus = (dispatch) => async(
 
     const status = {user_status: userStatus}
 
-    const response = await fetch (`http://localhost:8080/user/${userId}/status`, {
-        method:'PUT',
+    const response = await fetch (`http://localhost:8080/user/${userId}/update-status`, {
+        method:'POST',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -16,7 +16,7 @@ export const UpdateUserStatus = (dispatch) => async(
 
     let statusResponse = await response.json()
 
-    return dispatch(onUpdateUserStatus(statusResponse.user_status))
+    return dispatch(onUpdateUserStatus(statusResponse.user.user_status))
 
 }
 

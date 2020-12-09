@@ -11,7 +11,6 @@ import Navbar from "../../Navbar/Navbar"
 import { GetBubblePosts } from "../use-cases/getBubblePosts"
 import { GetBubbleUsers } from "../use-cases/getBubbleUsers"
 import { DeleteBubble } from "../use-cases/deleteBubble"
-import { user } from '../../Login/framework/reducer'
 import { AddBubblePost } from '../use-cases/addBubblePost'
 
 
@@ -28,17 +27,17 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
 
     const test = { name: 'John Smith', date: '9/10/2020', post: 'Some random test post about an activity' }
     const bubbleId = parseInt(useParams().bubbleId)
-
+    const userId = user.user.id
+    console.log(userId)
     console.log(bubbleId)
     useEffect(() => {
         getPosts(bubbleId)
-        getBubbleUsers(user.id)
+        getBubbleUsers(bubbleId)
 
     }, [])
     //need to grab posts info and display it and create action for adding and deleting posts
-    console.log(posts.posts)
+//    console.log(posts.posts)
     if (posts.posts === []) {
-        console.log('fefefe')
     }
     else {
         let width = window.innerWidth
@@ -62,13 +61,13 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
                         </div>
                         <div className="bubble-status">This bubble is at risk!</div>
 
-                        <div>hello</div>
+                        <div className = "post-input-label">hello</div>
                         <input
                             name="body"
                             type="text"
                             onChange={setField}>
                         </input>
-                        <button onClick ={() => {addBubblePost(user.user.id, fields)}}>Add Post</button>
+                        <button onClick ={() => {addBubblePost(userId, fields)}}>Add Post</button>
 
                         {posts.posts.map((post) => (
                             <div className="user-posts">
@@ -169,7 +168,7 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
 const mapStateToProps = (state, { posts }) => ({
     posts: state.bubblePosts,
     bubbleUsers: state.bubbleUsers,
-    user: state.user.user,
+    user: state.user,
     bubble: state.bubble.bubbleList,
 })
 
@@ -177,7 +176,7 @@ const mapDispatchToProps = (dispatch) => ({
     getPosts: GetBubblePosts(dispatch),
     getBubbleUsers: GetBubbleUsers(dispatch),
     deleteBubble: DeleteBubble(dispatch),
-    addbubblePost: AddBubblePost(dispatch),
+    addBubblePost: AddBubblePost(dispatch),
 })
 
 

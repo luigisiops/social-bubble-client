@@ -44,7 +44,7 @@ export const Members = ({getBubbleUsers, bubbleUsers}) => {
           size='mini'
           src='stock-profile.png'
         />
-        <Card.Header>{item.first_name}</Card.Header>
+        <Card.Header>{item.User.first_name + " " + item.User.last_name}</Card.Header>
         <Card.Meta>Member</Card.Meta>
       </Card.Content>
       <Card.Content extra>
