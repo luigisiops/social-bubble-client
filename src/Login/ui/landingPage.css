@@ -1,0 +1,128 @@
+.icon{
+    width: 35px;
+    height: 35px;
+    margin: 10px 10px 10px 30px
+}
+
+.hbox{
+    display: flex;
+    align-items: center;
+}
+
+.left-container{
+    float: left;
+    color: white;
+    background-color: rgb(81, 163, 211);
+    width: 55vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.right-container{
+    float:right;
+    color: white;
+    background-color: rgb(129, 198, 238);
+    width: 45vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#wrapper{
+    overflow: auto;
+}
+
+
+.text{
+    margin: 20px
+}
+
+.text2{
+    margin-bottom: 25px;
+}
+
+.login-button{
+    width: 20em;
+    height: 3em;
+    margin: 7px 20px 7px 20px;
+    display: inherit;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: rgb(148, 148, 226);
+    border: 1px white solid;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+
+}
+
+
+@media (max-width: 425px){
+    .icon{
+        width: 35px;
+        height: 35px;
+        margin: 10px 10px 10px 15px
+    }
+    
+    .hbox{
+        display: flex;
+        align-items: center;
+    }
+    
+    .left-container{
+        color: white;
+        background-color: rgb(81, 163, 211);
+        width: 100vw;
+        height: 50vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .right-container{
+        color: white;
+        background-color: rgb(84, 189, 250);
+        width: 100vw;
+        height: 50vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    #wrapper{
+        overflow: auto;
+    }
+    
+    
+    .text{
+        margin: 20px
+    }
+    
+    .text2{
+        margin-bottom: 25px;
+    }
+    
+    .login-button{
+        width: 20em;
+        height: 3em;
+        margin: 7px 3em 7px 3em;
+        display: inherit;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        background-color: rgb(148, 148, 226);
+        border: 1px white solid;
+        border-radius: 5px;
+        outline: none;
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
+    
+    }
+}

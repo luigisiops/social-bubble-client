@@ -6,6 +6,7 @@ import { Comment, Icon, Button } from 'semantic-ui-react'
 import './Bubbles.css'
 
 import Nav from "../../Login/ui/nav"
+import Navbar from "../../Navbar/Navbar"
 
 import { GetBubblePosts } from "../use-cases/getBubblePosts"
 import { GetBubbleUsers } from "../use-cases/getBubbleUsers"
@@ -30,21 +31,23 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, posts, user, b
         console.log('fefefe')
     }
     else {
+        let width = window.innerWidth
+        if (width > 768){
         return (
+            <div>
+                <Navbar />
             <div className="bubbles-container">
-                <Nav />
                 {bubble.map(item => {
                     if (bubbleId === item.id) {
                         return (
                             <h1 className="bubble-title">{item.title}</h1>)
                     }
                 })}
-
-                <Button secondary onClick = {() => {deleteBubble(bubbleId)}}>Delete Bubble?</Button>
+                
 
                 <div className="toggle">
-                    <Button primary color='blue'>Activities</Button>
-                    <Link to={`/members/${bubbleId}`}><Button className="links" primary color='blue'>Members</Button></Link>
+                    <Link to ={`/members/${bubbleId}}`}><Button primary color='blue' className="links button-width">Feed</Button></Link>
+                    <Link to={`/members/${bubbleId}`}><Button className="links button-width" primary color='blue'>Members</Button></Link>
 
                 </div>
                 <div className="bubble-status">This bubble is at risk!</div>
@@ -73,9 +76,66 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, posts, user, b
                         </Comment.Group>
                     </div>
                 ))}
+                <div className='delete-button'>
+                    <Button negative  onClick = {() => {deleteBubble(bubbleId)}}>Delete Bubble?</Button>
+                </div>
 
             </div>
-        )
+            </div>
+        )}else{
+            return(
+                <div>
+                <div className="bubbles-container">
+                {bubble.map(item => {
+                    if (bubbleId === item.id) {
+                        return (
+                            <h1 className="bubble-title">{item.title}</h1>)
+                    }
+                })}
+                
+
+                <div className="toggle">
+                <Link to ={`/members/${bubbleId}}`}><Button primary color='blue' className="links button-width">Feed</Button></Link>
+                    <Link to={`/members/${bubbleId}`}><Button className="links button-width" primary color='blue'>Members</Button></Link>
+
+                </div>
+                <div className="bubble-status">This bubble is at risk!</div>
+                {posts.posts.map((post) => (
+                    <div className="user-posts">
+
+                        <Comment.Group>
+                            <Comment>
+                                <Comment.Avatar as='a' src='/images/avatar/small/stevie.jpg' />
+                                <Comment.Content>
+                                    <Comment.Author>{post.Post.User.first_name + " " + post.Post.User.last_name}</Comment.Author>
+                                    <Comment.Metadata>
+                                        <div>
+                                            <Moment fromNow>{post.Post.createdAt}</Moment>
+                                        </div>
+                                        <div>
+                                            <Icon name='star' />5 Faves
+                        </div>
+                                    </Comment.Metadata>
+                                    <Comment.Text>
+                                        {post.Post.body}
+                                    </Comment.Text>
+                                </Comment.Content>
+                            </Comment>
+
+                        </Comment.Group>
+                        
+                    </div>
+                    
+                ))}
+                <div className='delete-button'>
+                    <Button negative  onClick = {() => {deleteBubble(bubbleId)}}>Delete Bubble?</Button>
+                </div>
+          
+            </div> 
+            <Navbar />
+            </div>
+            )
+        }
     }
 
 }

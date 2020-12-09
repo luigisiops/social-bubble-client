@@ -17,8 +17,14 @@ export const AddNewBubble = (dispatch) => async(
     })
     console.log(title)
     
+<<<<<<< HEAD
     let bubble = await response.json()
     return dispatch(onAddBubbles(bubble))
+=======
+    let test = await response.json()
+    
+return dispatch(onAddBubbles(test))
+>>>>>>> acd3757dcacab75300ed1fb7a77abf75066faa40
 
   }
 export default AddNewBubble

@@ -116,6 +116,25 @@
     border-radius: 3px;
 }
 
+.create-bubble-input {
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+
+.add-new-bubble-button {
+    background: #3685d0;
+    color: white;
+    padding: 5px 15px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 800;
+}
+.add-new-bubble-button:hover {
+    background: #3179bd;
+}
+
 .bubble-lists {
     font-family: 'Roboto';
     display: inherit;
