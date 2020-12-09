@@ -24,26 +24,13 @@ function Navbar() {
             <div>
                 <Link className="nav-item-container" to='/bubble-builder'>
                     <i class="fas fa-info-circle nav-icon"></i>
-                    <h2 className="nav-item-text">Covid-19 Info</h2>
+                    <h2 className="nav-item-text">COVID-19 Info</h2>
                 </Link>
-            </div>
-
-<<<<<<< HEAD
-            <div className="nav-item-container">
-                <i class="fas fa-info-circle nav-icon"></i>
-                <h2 className="nav-item-text"><Link to='/bubble-builder'>COVID-19 Info</Link></h2>
             </div>
 
             <div className="nav-item-container">
                 <i class="fas fa-door-open nav-icon"></i>
                 <h2 className="nav-item-text"><Link to='/bubble-builder'>Logout</Link></h2>
-=======
-            <div >
-                <Link className="nav-item-container" to='/login'>
-                    <i class="fas fa-door-open nav-icon"></i>
-                    <h2 className="nav-item-text">Logout</h2>
-                </Link>
->>>>>>> master
             </div>
             
         </div>
