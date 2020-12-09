@@ -44,7 +44,7 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
         let width = window.innerWidth
         if (width > 768) {
             return (
-                <div>
+                <div class="box">
                     <Navbar />
                     <div className="bubbles-container">
                         {bubble.map(item => {
@@ -75,7 +75,6 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
 
                                 <Comment.Group>
                                     <Comment>
-                                        <Comment.Avatar as='a' src='/images/avatar/small/stevie.jpg' />
                                         <Comment.Content>
                                             <Comment.Author>{post.Post.User.first_name + " " + post.Post.User.last_name}</Comment.Author>
                                             <Comment.Metadata>
@@ -83,7 +82,7 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
                                                     <Moment fromNow>{post.Post.createdAt}</Moment>
                                                 </div>
                                                 <div>
-                                                    <Icon name='star' />5 Faves
+                                                    
                         </div>
                                             </Comment.Metadata>
                                             <Comment.Text>
@@ -104,7 +103,7 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
             )
         } else {
             return (
-                <div>
+                <div class="box">
                     <div className="bubbles-container">
                         {bubble.map(item => {
                             if (bubbleId === item.id) {
@@ -125,7 +124,6 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
 
                                 <Comment.Group>
                                     <Comment>
-                                        <Comment.Avatar as='a' src='/images/avatar/small/stevie.jpg' />
                                         <Comment.Content>
                                             <Comment.Author>{post.Post.User.first_name + " " + post.Post.User.last_name}</Comment.Author>
                                             <Comment.Metadata>
@@ -133,7 +131,7 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
                                                     <Moment fromNow>{post.Post.createdAt}</Moment>
                                                 </div>
                                                 <div>
-                                                    <Icon name='star' />5 Faves
+                                                    
                         </div>
                                             </Comment.Metadata>
                                             <Comment.Text>
