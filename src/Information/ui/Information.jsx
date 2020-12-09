@@ -78,7 +78,9 @@ export const Information = () => {
                <div>
                   <img className="infographics" src={info6} />
                </div>
+
             </Carousel>
+            
          </div>
 
          <div className="links-container">
