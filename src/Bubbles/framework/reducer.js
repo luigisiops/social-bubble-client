@@ -9,25 +9,6 @@ import {
     onUpdateUserStatus,
 } from "./actions"
 
-export const user = createReducer(
-    {
-        user: {
-            id: 1,
-            firstName: "John",
-            lastName: "Smith",
-            email: "johnsmith@email.com",
-            password: "password",
-            user_status:"green"
-         }
-    },
-
-    {
-        [onUpdateUserStatus.type] : (state, {payload: user}) => {
-            return {...state, user}
-        }
-    },
-)
-
 export const bubble = createReducer(
     {
         bubbleList: [],
@@ -49,7 +30,7 @@ export const bubble = createReducer(
             let arr = state.bubbleList
             let bubbleList = []
             arr.forEach((element) => {
-                if (element.id != bubbleId){
+                if (element.id !== bubbleId){
                     bubbleList.push(element)
                 }
             })
@@ -84,4 +65,4 @@ export const bubblePosts = createReducer(
     }
 )
 
-export default { bubblePosts, bubble, bubbleUsers, user }
+export default { bubblePosts, bubble, bubbleUsers }

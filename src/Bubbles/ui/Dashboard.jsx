@@ -12,21 +12,29 @@ import Navbar from "../../Navbar/Navbar"
 
 
 export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, updateUserStatus, user}) => {
+   let status = user.user.user_status
+
+
    const [loading, setLoading] = useState(true)
    const [adding, setAdding] = useState(false)
    const [fields, setFields] = useState({})
-   const [userStatus, setUserStatus] = useState('green')
+   const [userStatus, setUserStatus] = useState(status)
    const [statusText, setStatusText] = useState('Healthy')
-   console.log(user.user.id)
-
-   let status = user.user.user_status
+   const userFullName = user.user.first_name + " " + user.user.last_name
+   console.log(user)
+   console.log(userStatus)
    
-    if (userStatus === 'green') {
+   var statusComponent;
+   if (status === 'green') {
       let statusText = "You are healthy"
-    } else if (userStatus === 'yellow') {
+      statusComponent = <div>{statusText}</div>
+    } else if (status === 'yellow') {
        let statusText = "You are at risk"
-    } else if (userStatus === 'red') {
+       statusComponent = <div>{statusText}</div>
+
+    } else if (status === 'red') {
       let statusText = "You are sick"
+      statusComponent = <div>{statusText}</div>
     }
 console.log(bubbles)
 
@@ -36,12 +44,10 @@ console.log(bubbles)
          ...fields,
          [evt.target.name]: evt.target.value
       })
-   console.log(fields)
 
    console.log(bubbles.bubbleList)
 
    useEffect(() => {
-      console.log(user.user)
       getBubbles(user.user.id)
    }, [])
 
@@ -53,13 +59,9 @@ console.log(bubbles)
       const list = bubbles.bubbleList
       const userId = user.user.id
       
-      const handleUpdateStatus = (evt) => {
-         console.log(evt.target.value)
-         
+      const handleUpdateStatus = (evt) => {         
          setUserStatus(evt.target.value)
-
-         
-
+         console.log(userStatus)
       }
 
       return (
@@ -68,9 +70,9 @@ console.log(bubbles)
                {/* <Nav /> */}
                <Navbar />
             </div>
-            <div className="dashboard-username">John Smith</div>
+            <div className="dashboard-username">{userFullName}</div>
             <Image src="stock-profile.png" className={"profile-image image-" + status}/>
-            <div className= {"dashboard-status " + status}>{statusText}</div>
+            <div className= {"dashboard-status " + userStatus}>{statusComponent}</div>
 
             <div className="user-status-container">
             {/* <Dropdown className="select-status"
@@ -85,18 +87,8 @@ console.log(bubbles)
                <option value="yellow">I am at risk</option>
                <option value="red">I am sick</option>
             </select>
-            <Button primary onClick = {() => {
-               updateUserStatus(userStatus)
-
-               if (userStatus === 'green') {
-                 setStatusText("Healthy")
-               } else if (userStatus === 'yellow') {
-                  setStatusText("At Risk")
-               } else if (userStatus === 'red') {
-                  setStatusText("Sick")
-               }
-               
-               }}>Update Status</Button>
+            <Button primary onClick = {() => {updateUserStatus(userId, userStatus)}}
+               >Update Status</Button>
             </div>
             
             {(adding === true) ?

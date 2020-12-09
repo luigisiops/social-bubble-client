@@ -10,7 +10,7 @@ import Nav from "../../Login/ui/nav"
 import { GetBubblePosts } from "../use-cases/getBubblePosts"
 import { GetBubbleUsers } from "../use-cases/getBubbleUsers"
 import {DeleteBubble} from "../use-cases/deleteBubble"
-import { user } from '../framework/reducer'
+import { user } from '../../Login/framework/reducer'
 
 
 
