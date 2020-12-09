@@ -9,6 +9,10 @@ import {
     onDeleteBubble,
 } from "./actions"
 
+import {
+    onUpdateUserStatus,
+} from "../../Login/framework/actions"
+
 export const bubble = createReducer(
     {
         bubbleList: [],
@@ -23,6 +27,14 @@ export const bubble = createReducer(
             }
                 state.byId[bubbleList.id] = bubbleList
                 state.bubbleList = [...state.bubbleList, bubbleList]
+        },
+        [onUpdateUserStatus.type]: (state, { payload: status}) => {
+            for (const item in state.byId) {
+                state.byId[item].bubble_status = status
+            }
+            state.bubbleList.forEach((item) => {
+                item.bubble_status = status
+            })
         },
 
         [onGetBubbles.type]: (state, { payload: bubbleList }) => {

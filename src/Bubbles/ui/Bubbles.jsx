@@ -31,7 +31,7 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
     const [status, setStatus] = useState(bubbleStatus)
     const [statusText, setStatusText] = useState('')
     
-    var statusComponent;
+    let statusComponent;
     if (status === 'green') {
         let statusText = "This bubble is safe!"
         statusComponent = <div className = "bubble-status-green">{statusText}</div>
@@ -45,11 +45,6 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
         statusComponent = <div className = "bubble-status-red">{statusText}</div>
         }
 
-    const test = { name: 'John Smith', date: '9/10/2020', post: 'Some random test post about an activity' }
-
-    console.log(userId)
-    console.log(bubbleId)
-    console.log(bubble.byId)
     useEffect(() => {
         getPosts(bubbleId)
         getBubbleUsers(bubbleId)
@@ -101,14 +96,14 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
                             placeholder = "Create Post"
                             onChange={setField}>
                         </Input>
-                        <Button id="addbutton" primary onClick ={() => {addBubblePost(user.user.id, fields)}}>Add Post</Button>
+                        <Button id="addbutton" primary onClick ={() => {addBubblePost(userId, fields, bubbleId)}}>Add Post</Button>
 
                         {posts.posts.map((post) => (
                             <div className="user-posts">
 
                                 <Comment.Group>
                                     <Comment>
-                                        <Comment.Avatar as='a' src='/images/avatar/small/stevie.jpg' />
+                                        <Comment.Avatar as='a' src='stock-profile.png' />
                                         <Comment.Content>
                                             <Comment.Author>{post.Post.User.first_name + " " + post.Post.User.last_name}</Comment.Author>
                                             <Comment.Metadata>
@@ -116,7 +111,7 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
                                                     <Moment fromNow>{post.Post.createdAt}</Moment>
                                                 </div>
                                                 <div>
-                                                    <Icon name='star' />5 Faves
+                                                    <Icon name='star'/> 5 Faves
                         </div>
                                             </Comment.Metadata>
                                             <Comment.Text>
@@ -158,7 +153,7 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
 
                                 <Comment.Group>
                                     <Comment>
-                                        <Comment.Avatar as='a' src='/images/avatar/small/stevie.jpg' />
+                                        <Comment.Avatar as='a' src='stock-profile.png' />
                                         <Comment.Content>
                                             <Comment.Author>{post.Post.User.first_name + " " + post.Post.User.last_name}</Comment.Author>
                                             <Comment.Metadata>
