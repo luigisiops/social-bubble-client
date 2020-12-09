@@ -48,11 +48,10 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, u
 
    useEffect(() => {
       if(userId){
-         setLoading(userId)
          getBubbles(user.user.id)
       }
 
-   }, [])
+   }, [user])
 
       const list = bubbles.bubbleList
       

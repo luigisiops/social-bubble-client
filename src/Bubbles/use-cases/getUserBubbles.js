@@ -4,6 +4,9 @@ export const GetUserBubbles = (dispatch) => async(
     user
 ) => {
     
+    if (user === null){
+      return dispatch(onGetBubbles(bubble))
+    }
 
     const response = await fetch(`http://localhost:8080/user/${user}/bubbles`,{
         method: 'GET',

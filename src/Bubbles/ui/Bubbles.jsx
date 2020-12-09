@@ -46,9 +46,10 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
         }
 
     useEffect(() => {
-        getPosts(bubbleId)
-        getBubbleUsers(bubbleId)
-    }, [])
+            getPosts(bubbleId)
+            getBubbleUsers(bubbleId)
+        
+    }, [user])
     //creating options for displaying bubble risk:
 
     const handleBubbleStatus = () => {
