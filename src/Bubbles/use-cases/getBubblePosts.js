@@ -15,6 +15,7 @@ export const GetBubblePosts = (dispatch) => async(
     })
 
     let posts = await response.json()
+    
     return dispatch(onGetBubblePosts(posts))
 }
 

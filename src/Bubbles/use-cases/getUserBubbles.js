@@ -4,9 +4,11 @@ export const GetUserBubbles = (dispatch) => async(
     user
 ) => {
     
-    const userId = {id: user}
+    if (user === null){
+      return dispatch(onGetBubbles(bubble))
+    }
 
-    const response = await fetch(`https://gentle-tundra-53821.herokuapp.com/user/40/bubbles`,{
+    const response = await fetch(`https://gentle-tundra-53821.herokuapp.com/user/${user}/bubbles`,{
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'

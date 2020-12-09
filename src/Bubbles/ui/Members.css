@@ -6,6 +6,21 @@
     margin-bottom: 20px;
 }
 
+.bubble-status-green{
+    font-size: 16px;
+    color: green
+}
+
+.bubble-status-yellow{
+    font-size: 16px;
+    color: yellow
+}
+
+.bubble-status-red{
+    font-size: 16px;
+    color: red
+}
+
 #root{
     height:100%
 }

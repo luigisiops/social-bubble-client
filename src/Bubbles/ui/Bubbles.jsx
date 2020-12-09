@@ -11,14 +11,16 @@ import Navbar from "../../Navbar/Navbar"
 import { GetBubblePosts } from "../use-cases/getBubblePosts"
 import { GetBubbleUsers } from "../use-cases/getBubbleUsers"
 import { DeleteBubble } from "../use-cases/deleteBubble"
-import { user } from '../../Login/framework/reducer'
 import { AddBubblePost } from '../use-cases/addBubblePost'
 
 
 
-export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addbubblePost, posts, user, bubble }) => {
-    const [fields, setFields] = useState({})
+export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost, posts, user, bubble }) => {
+    const bubbleId = parseInt(useParams().bubbleId)
+    const userId = user.user.id
+    let bubbleStatus = bubble.byId[bubbleId].bubble_status
 
+    const [fields, setFields] = useState({})
     const setField = (evt) => {
         setFields({
             ...fields,
@@ -26,19 +28,45 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addbubblePost,
         })
     }
 
-    const test = { name: 'John Smith', date: '9/10/2020', post: 'Some random test post about an activity' }
-    const bubbleId = parseInt(useParams().bubbleId)
+    const [status, setStatus] = useState(bubbleStatus)
+    const [statusText, setStatusText] = useState('')
+    
+    let statusComponent;
+    if (status === 'green') {
+        let statusText = "This bubble is safe!"
+        statusComponent = <div className = "bubble-status-green">{statusText}</div>
+        } 
+    else if (status === 'yellow') {
+        let statusText = "One or more members are at risk!"
+        statusComponent = <div className = "bubble-status-yellow">{statusText}</div>
 
-    console.log(bubbleId)
+    } else if (status === 'red') {
+        let statusText = "One or more members are sick!"
+        statusComponent = <div className = "bubble-status-red">{statusText}</div>
+        }
+
     useEffect(() => {
-        getPosts(bubbleId)
-        getBubbleUsers(user.id)
+            getPosts(bubbleId)
+            getBubbleUsers(bubbleId)
+        
+    }, [user])
+    //creating options for displaying bubble risk:
 
-    }, [])
+    const handleBubbleStatus = () => {
+        if (bubbleStatus === "green") {
+            setStatus('This bubble is safe')
+        }
+        else if (bubbleStatus === "yellow"){
+            setStatus('One or more members is at risk')
+        }
+        else if (bubbleStatus === "red"){
+            setStatus('One or more members is sick')
+        }
+    }
+
     //need to grab posts info and display it and create action for adding and deleting posts
-    console.log(posts.posts)
+//    console.log(posts.posts)
     if (posts.posts === []) {
-        console.log('fefefe')
     }
     else {
         let width = window.innerWidth
@@ -47,7 +75,7 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addbubblePost,
                 <div class="box">
                     <Navbar />
                     <div className="bubbles-container">
-                        {bubble.map(item => {
+                        {bubble.bubbleList.map(item => {
                             if (bubbleId === item.id) {
                                 return (
                                     <h1 className="bubble-title">{item.title}</h1>)
@@ -60,7 +88,8 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addbubblePost,
                             <Link to={`/members/${bubbleId}`}><Button className="links button-width" primary color='blue'>Members</Button></Link>
 
                         </div>
-                        <div className="bubble-status">This bubble is at risk!</div>
+
+                            <div className="bubble-status"> {statusComponent} </div>                          
 
                         <Input 
                             name="body"
@@ -68,7 +97,7 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addbubblePost,
                             placeholder = "Create Post"
                             onChange={setField}>
                         </Input>
-                        <Button id="addbutton" primary onClick ={() => {addbubblePost(user.id, fields)}}>Add Post</Button>
+                        <Button id="addbutton" primary onClick ={() => {addBubblePost(userId, fields, bubbleId)}}>Add Post</Button>
 
                         {posts.posts.map((post) => (
                             <div className="user-posts">
@@ -105,7 +134,7 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addbubblePost,
             return (
                 <div class="box">
                     <div className="bubbles-container">
-                        {bubble.map(item => {
+                        {bubble.bubbleList.map(item => {
                             if (bubbleId === item.id) {
                                 return (
                                     <h1 className="bubble-title">{item.title}</h1>)
@@ -124,6 +153,7 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addbubblePost,
 
                                 <Comment.Group>
                                     <Comment>
+                                        <Comment.Avatar as='a' src='stock-profile.png' />
                                         <Comment.Content>
                                             <Comment.Author>{post.Post.User.first_name + " " + post.Post.User.last_name}</Comment.Author>
                                             <Comment.Metadata>
@@ -167,15 +197,15 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addbubblePost,
 const mapStateToProps = (state, { posts }) => ({
     posts: state.bubblePosts,
     bubbleUsers: state.bubbleUsers,
-    user: state.user.user,
-    bubble: state.bubble.bubbleList,
+    user: state.user,
+    bubble: state.bubble,
 })
 
 const mapDispatchToProps = (dispatch) => ({
     getPosts: GetBubblePosts(dispatch),
     getBubbleUsers: GetBubbleUsers(dispatch),
     deleteBubble: DeleteBubble(dispatch),
-    addbubblePost: AddBubblePost(dispatch),
+    addBubblePost: AddBubblePost(dispatch),
 })
 
 

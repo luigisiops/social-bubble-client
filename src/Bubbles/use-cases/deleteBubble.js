@@ -12,7 +12,6 @@ export const DeleteBubble = (dispatch) => async(
         }, 
     })
     
-    let bubbleResponse = await response.json()
     return dispatch(onDeleteBubble(bubbleId))
 
   }
