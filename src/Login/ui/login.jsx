@@ -93,17 +93,15 @@ function Login(props, getUser) {
                     <button
                     onClick={performLoginRequest}
                     // type="submit"
-                    // className="login-btn"
+                    // className="loginButton"
                     >
                     Login
                     </button>
                 {/* </form> */}
             </div>
-            <div>
-                <NavLink to ="/dashboard">Dashboard</NavLink>
-            </div>
+        
             <div className="signup-link">
-                <p>Not a user? <NavLink to="/register">Register</NavLink></p>
+                <p>Not a user?<NavLink to="/register">Register</NavLink></p>
             </div>
         </div>
     )

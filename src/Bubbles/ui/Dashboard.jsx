@@ -100,7 +100,7 @@ console.log(bubbles)
             
             {(adding === true) ?
                <div className="add-to-bubble">
-                  <Input className="status-input create-bubble-input" placeholder="Create new bubble"
+                  <Input className="status-input create-bubble-input" placeholder="Enter new bubble name..."
                      name="title"
                      type="text"
                      value={fields.title}
@@ -109,7 +109,7 @@ console.log(bubbles)
                   <button primary className="add-new-bubble-button" onClick={() => addNewBubble(fields, userId)}>Add</button>
                </div>
                :
-               <Button primary onClick={() => setAdding(true)}>Enter new bubble name...</Button>
+               <Button primary onClick={() => setAdding(true)}>Create a new bubble</Button>
             }
 
             <div className="bubble-lists "> <h1 className="bubble-lists-title">Your Bubbles</h1> </div>
