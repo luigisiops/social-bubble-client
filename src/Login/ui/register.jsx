@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 // import { connect } from "react-redux"
-import { NavLink } from "react-router-dom"
+import { NavLink, Redirect } from "react-router-dom"
 import "./login.css"
 import { useHistory } from "react-router-dom"
 
@@ -28,8 +28,9 @@ function Register() {
           .then((res) => res.json())
           .then((response) => {
             console.log("Response", response);
-            alert(response.message);
+            alert("Thank You For Registering!");
             history.push("/login");
+            Redirect("login");
           });
       }
 
