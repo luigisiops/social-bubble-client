@@ -7,7 +7,7 @@ export const GetBubblePosts = (dispatch) => async(
     console.log('djfhkaf')
     console.log(bubbleId)
 
-    const response = await fetch(`http://localhost:8080/post/${bubbleId.id}`, {
+    const response = await fetch(`https://gentle-tundra-53821.herokuapp.com/post/${bubbleId.id}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'

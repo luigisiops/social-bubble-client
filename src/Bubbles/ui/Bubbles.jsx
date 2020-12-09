@@ -16,7 +16,7 @@ import { AddBubblePost } from '../use-cases/addBubblePost'
 
 
 
-export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost, posts, user, bubble }) => {
+export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addbubblePost, posts, user, bubble }) => {
     const [fields, setFields] = useState({})
 
     const setField = (evt) => {
@@ -68,7 +68,7 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
                             placeholder = "Create Post"
                             onChange={setField}>
                         </Input>
-                        <Button id="addbutton" primary onClick ={() => {addBubblePost(user.user.id, fields)}}>Add Post</Button>
+                        <Button id="addbutton" primary onClick ={() => {addbubblePost(user.id, fields)}}>Add Post</Button>
 
                         {posts.posts.map((post) => (
                             <div className="user-posts">

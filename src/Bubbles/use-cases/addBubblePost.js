@@ -6,7 +6,7 @@ export const AddBubblePost = (dispatch) => async(
 
     const post = {user_id: userId, body: fields }
 
-    const response = await fetch(`http://localhost:8080/post/${post.user_id}/users`, {
+    const response = await fetch(`https://gentle-tundra-53821.herokuapp.com/post/${post.user_id}/users`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

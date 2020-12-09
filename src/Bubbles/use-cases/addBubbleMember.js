@@ -7,7 +7,7 @@ export const AddBubbleMember = (dispatch) => async (
     const id = bubbleId
     const email = fields.email
 
-    const response = await fetch(`http://localhost:8080/${id}/bubbleuser`, {
+    const response = await fetch(`https://gentle-tundra-53821.herokuapp.com/${id}/bubbleuser`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

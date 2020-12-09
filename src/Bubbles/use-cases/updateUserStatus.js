@@ -6,7 +6,7 @@ export const UpdateUserStatus = (dispatch) => async(
 
     const status = {user_status: userStatus}
 
-    const response = await fetch (`http://localhost:8080/user/${userId}/status`, {
+    const response = await fetch (`https://gentle-tundra-53821.herokuapp.com/user/${userId}/status`, {
         method:'PUT',
         headers: {
             'Content-Type': 'application/json'

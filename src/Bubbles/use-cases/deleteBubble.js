@@ -5,7 +5,7 @@ export const DeleteBubble = (dispatch) => async(
 ) => {
     
 
-    const response = await fetch(`http://localhost:8080/bubble/${bubbleId}/delete-bubble`,{
+    const response = await fetch(`https://gentle-tundra-53821.herokuapp.com/bubble/${bubbleId}/delete-bubble`,{
         method: 'DELETE', 
         headers: {
           'Content-Type': 'application/json'

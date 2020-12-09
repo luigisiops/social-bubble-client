@@ -8,7 +8,7 @@ export const AddNewBubble = (dispatch) => async(
 
     console.log(title)
 
-    const response = await fetch('http://localhost:8080/bubble/create-bubble',{
+    const response = await fetch('https://gentle-tundra-53821.herokuapp.com/bubble/create-bubble',{
         method: 'POST', 
         headers: {
           'Content-Type': 'application/json'

@@ -8,7 +8,7 @@ export const GetBubbleUsers = (dispatch) => async (
     const bubbleId = { id: bubble }
 
 
-    const response = await fetch(`http://localhost:8080/bubble/${bubble}/users`, {
+    const response = await fetch(`https://gentle-tundra-53821.herokuapp.com/bubble/${bubble}/users`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

@@ -4,7 +4,7 @@ export const getLoggedInUser = (dispatch) => async(
     user
 ) => {
     console.log(user)
-    const response = await fetch(`http://localhost:8080/login`, {
+    const response = await fetch(`https://gentle-tundra-53821.herokuapp.com/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
