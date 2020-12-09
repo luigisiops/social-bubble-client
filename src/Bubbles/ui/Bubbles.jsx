@@ -11,6 +11,7 @@ import { GetBubblePosts } from "../use-cases/getBubblePosts"
 import { GetBubbleUsers } from "../use-cases/getBubbleUsers"
 import {DeleteBubble} from "../use-cases/deleteBubble"
 import { user } from '../../Login/framework/reducer'
+import {AddBubblePost} from '../use-cases/addBubblePost'
 
 
 

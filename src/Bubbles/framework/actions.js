@@ -3,7 +3,8 @@ import { createAction } from "@reduxjs/toolkit"
 export const onGetBubbles = createAction("dashboard.getBubbles")
 export const onUpdateUserStatus = createAction("user.updateStatus")
 
-export const onGetBubblePosts = createAction("bubbles.getBubbleInfo")
+export const onGetBubblePosts = createAction("bubbles.getBubblePost")
+export const onAddBubblePost = createAction ("bubbles.addBubblePost")
 
 export const onGetBubbleUsers = createAction("bubbles.getBubble.users")
 export const onAddBubbleUsers = createAction("bubbles.addBubbleUser")
