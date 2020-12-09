@@ -5,3 +5,11 @@
 .card{
     margin-bottom: 20px;
 }
+
+#root{
+    height:100%
+}
+
+.box{
+    height:100%
+}

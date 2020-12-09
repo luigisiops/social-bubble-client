@@ -24,7 +24,7 @@ export const Members = ({getBubbleUsers, bubbleUsers}) => {
       let width = window.innerWidth
       if (width > 768){
         return (
-          <div>
+          <div class ="box">
             <Navbar />
             <div className="bubbles-container">
                 
@@ -39,23 +39,9 @@ export const Members = ({getBubbleUsers, bubbleUsers}) => {
                     
                     <div class="card"> <Card>
       <Card.Content>
-        <Image
-          floated='right'
-          size='mini'
-          src='stock-profile.png'
-        />
-        <Card.Header>{item.first_name}</Card.Header>
+        
+        <Card.Header>{item.User.first_name} {item.User.last_name}</Card.Header>
         <Card.Meta>Member</Card.Meta>
-      </Card.Content>
-      <Card.Content extra>
-        <div className='ui two buttons'>
-          <Button basic color='green'>
-            Approve
-          </Button>
-          <Button basic color='red'>
-            Decline
-          </Button>
-        </div>
       </Card.Content>
     </Card></div>
                 ))}
@@ -65,7 +51,7 @@ export const Members = ({getBubbleUsers, bubbleUsers}) => {
         )
     }else{
       return(
-        <div>
+        <div class="box">
         <div className="bubbles-container">
             
             <h1 className="bubble-title">Family</h1>
@@ -79,23 +65,8 @@ export const Members = ({getBubbleUsers, bubbleUsers}) => {
                 
                 <div class="card"> <Card>
   <Card.Content>
-    <Image
-      floated='right'
-      size='mini'
-      src='stock-profile.png'
-    />
     <Card.Header>{item.first_name}</Card.Header>
     <Card.Meta>Member</Card.Meta>
-  </Card.Content>
-  <Card.Content extra>
-    <div className='ui two buttons'>
-      <Button basic color='green'>
-        Approve
-      </Button>
-      <Button basic color='red'>
-        Decline
-      </Button>
-    </div>
   </Card.Content>
 </Card></div>
             ))}
