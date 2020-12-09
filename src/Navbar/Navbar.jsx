@@ -22,7 +22,7 @@ function Navbar() {
             </div> */}
 
             <div>
-                <Link className="nav-item-container" to='/bubble-builder'>
+                <Link className="nav-item-container" to='/coronavirus-info'>
                     <i class="fas fa-info-circle nav-icon"></i>
                     <h2 className="nav-item-text">COVID-19 Info</h2>
                 </Link>
