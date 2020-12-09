@@ -28,9 +28,11 @@ function Navbar() {
                 </Link>
             </div>
 
-            <div className="nav-item-container">
-                <i class="fas fa-door-open nav-icon"></i>
-                <h2 className="nav-item-text"><Link to='/bubble-builder'>Logout</Link></h2>
+            <div >
+                <Link className="nav-item-container" to='/login'>
+                    <i class="fas fa-door-open nav-icon"></i>
+                    <h2 className="nav-item-text">Logout</h2>
+                </Link>
             </div>
             
         </div>
