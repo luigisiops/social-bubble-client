@@ -62,6 +62,7 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
                         </div>
                         <div className="bubble-status">This bubble is at risk!</div>
 
+                        <div>hello</div>
                         <input
                             name="body"
                             type="text"
