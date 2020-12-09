@@ -7,7 +7,7 @@ Social Bubble is a social networking site that provides contract tracing for COV
 The Covid-19 Pandemic has changed our lives in a drastic way. It's though not being to be with family and friends for fear of contracting or the virus. We wanted to find a way for a group of people to know if it's safe to meet up during this pandemic.
 
 
-# Features
+## Features
   - Create Social Bubbles
   - Add users by their login email to the bubble
   - Send messages to bubbles of their choice
