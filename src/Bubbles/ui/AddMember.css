@@ -1,0 +1,14 @@
+.addMember-container{
+    color: white;
+    background-color: rgb(81, 163, 211);
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Nav{
+    margin-bottom: 0;
+}

@@ -4,7 +4,8 @@ import {connect} from "react-redux"
 import {GetBubbleUsers} from '../use-cases/getBubbleUsers'
 import {AddBubbleMember} from "../use-cases/addBubbleMember"
 import { Button, Card, Image, Input } from 'semantic-ui-react'
-import Nav from "../../Login/ui/nav"
+import Navbar from "../../Navbar/Navbar"
+import "./AddMember.css"
 
 export const AddMember = ({addMember}) => {
 
@@ -19,15 +20,25 @@ export const AddMember = ({addMember}) => {
 console.log(fields)
 
    return (
+      <div>
+      <Navbar class="Nav"></Navbar>
       <div className="addMember-container">
-          <h1> Add Member</h1>
-          <div className="ui input"> 
-          <label>User's Email:</label>
-          <input type="text" placeholder="Email Address" value={fields.email} onChange={setField}/> 
-          <Button onClick={() => addMember(fields, bubbleId)} basic color='green'>
-            Add Member
-          </Button>
+          
+          <div>
+             <h1> Add Member</h1>
+         </div>
+          <div> 
+             <label>User's Email:</label>
+          </div>
+          <div>
+            <input type="text" placeholder="Email Address" value={fields.email} onChange={setField}/>
           </div> 
+          <div>
+            <Button onClick={() => addMember(fields, bubbleId)} basic color='green'>
+            Add Member
+            </Button>
+         </div> 
+      </div>
       </div>
    )
 }
