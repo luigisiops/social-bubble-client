@@ -68,7 +68,7 @@ $ npm start
 
 ### Usage
 We have a test user to show a readily made social bubble
-social-bubble.surge.sh
+www.social-bubble.surge.sh
 
 ```sh
 username: example@gmail.com
