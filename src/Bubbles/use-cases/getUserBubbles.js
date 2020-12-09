@@ -4,7 +4,7 @@ export const GetUserBubbles = (dispatch) => async(
     user
 ) => {
     
-    const userId = {id: user.id}
+    const userId = {id: user}
 
     const response = await fetch(`http://localhost:8080/user/10/bubbles`,{
         method: 'GET',
