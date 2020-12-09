@@ -28,7 +28,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 4em;
+    margin-top: 3em;
 }
 
 .links {
@@ -40,6 +40,10 @@
 
 .button-width{
     width: 100px
+}
+
+#addbutton{
+    margin: 10px 0px 30px 0px
 }
 
 .bubble-status{

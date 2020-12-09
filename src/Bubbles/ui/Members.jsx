@@ -37,7 +37,7 @@ export const Members = ({getBubbleUsers, bubbleUsers}) => {
                 <div className="bubble-status">This bubble is at risk!</div>      
                 {bubbleUsers.byId.map((item) => (
                     
-                    <div> <Card>
+                    <div class="card"> <Card>
       <Card.Content>
         <Image
           floated='right'
@@ -77,7 +77,7 @@ export const Members = ({getBubbleUsers, bubbleUsers}) => {
             <div className="bubble-status">This bubble is at risk!</div>      
             {bubbleUsers.byId.map((item) => (
                 
-                <div> <Card>
+                <div class="card"> <Card>
   <Card.Content>
     <Image
       floated='right'

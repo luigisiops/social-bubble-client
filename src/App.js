@@ -17,6 +17,8 @@ import Members from './Bubbles/ui/Members';
 import LandingPage from './Login/ui/landingPage';
 import AddMember from './Bubbles/ui/AddMember'
 
+import Information from './Information/ui/Information'
+
 // import { configureStore } from '@reduxjs/toolkit'
 
 function App() {
@@ -41,6 +43,7 @@ function App() {
           <Route exact path = '/dashboard' component = {Dashboard} />
           <Route exact path = '/members/:bubbleId' component = {Members} />
           <Route exact path = '/members/:bubbleId/add-member' component = {AddMember} />
+          <Route exact path = '/coronavirus-info' component = {Information} />
         </Switch>
   );
 }
