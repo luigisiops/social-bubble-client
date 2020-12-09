@@ -26,14 +26,14 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, u
    
    var statusComponent;
    if (status === 'green') {
-      let statusText = "You are healthy"
+      let statusText = "Healthy"
       statusComponent = <div>{statusText}</div>
     } else if (status === 'yellow') {
-       let statusText = "You are at risk"
+       let statusText = "At Risk"
        statusComponent = <div>{statusText}</div>
 
     } else if (status === 'red') {
-      let statusText = "You are sick"
+      let statusText = "Sick"
       statusComponent = <div>{statusText}</div>
     }
 console.log(bubbles)
@@ -72,7 +72,7 @@ console.log(bubbles)
             </div>
             <div className="dashboard-username">{userFullName}</div>
             <Image src="stock-profile.png" className={"profile-image image-" + status}/>
-            <div className= {"dashboard-status " + userStatus}>{statusComponent}</div>
+            <div className= {"dashboard-status " + status}>{statusComponent}</div>
 
             <div className="user-status-container">
             {/* <Dropdown className="select-status"
