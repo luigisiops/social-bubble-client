@@ -17,6 +17,7 @@ import { AddBubblePost } from '../use-cases/addBubblePost'
 
 export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost, posts, user, bubble }) => {
     const [fields, setFields] = useState({})
+    const [title, setTitle] = useState({})
 
     const setField = (evt) => {
         setFields({
@@ -33,8 +34,10 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
     useEffect(() => {
         getPosts(bubbleId)
         getBubbleUsers(bubbleId)
+        setTitle(bubble)
 
     }, [])
+
     //need to grab posts info and display it and create action for adding and deleting posts
 //    console.log(posts.posts)
     if (posts.posts === []) {
