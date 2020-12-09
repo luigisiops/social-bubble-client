@@ -64,7 +64,7 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, u
       let width = window.innerWidth
       if (width > 768){
       return (
-         <div>
+         <div class="box">
             <Navbar />
          
          <div className="dashboard-container">
@@ -108,7 +108,7 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, u
             }
 
             <div className="bubble-lists "> <h1 className="bubble-lists-title">Your Bubbles</h1> </div>
-            <div>
+            <div class="list">
                {list.map((item) => (
                   <Link to = {`/bubbles/${item.id}`} > 
                      <Card
@@ -130,7 +130,7 @@ export const Dashboard = ({ bubbles, getBubbles, addNewBubble, getBubbleUsers, u
       )}
       else{
          return (
-            <div>          
+            <div class="box">          
             <div className="dashboard-container">
                <div className='nav-component-container'>
                   {/* <Nav /> */}

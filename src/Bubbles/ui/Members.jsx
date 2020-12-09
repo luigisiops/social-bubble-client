@@ -41,7 +41,7 @@ export const Members = ({getBubbleUsers, bubbleUsers, bubbles, user}) => {
       let width = window.innerWidth
       if (width > 768){
         return (
-          <div>
+          <div class ="box">
             <Navbar />
             <div className="bubbles-container">
                 
@@ -72,7 +72,7 @@ export const Members = ({getBubbleUsers, bubbleUsers, bubbles, user}) => {
         )
     }else{
       return(
-        <div>
+        <div class="box">
         <div className="bubbles-container">
             
             <h1 className="bubble-title">Family</h1>
@@ -86,11 +86,6 @@ export const Members = ({getBubbleUsers, bubbleUsers, bubbles, user}) => {
                 
                 <div class="card"> <Card>
   <Card.Content>
-    <Image
-      floated='right'
-      size='mini'
-      src='stock-profile.png'
-    />
     <Card.Header>{item.first_name}</Card.Header>
     <Card.Meta>Member</Card.Meta>
   </Card.Content>

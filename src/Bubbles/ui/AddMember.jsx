@@ -20,7 +20,7 @@ export const AddMember = ({addMember}) => {
    let width = window.innerWidth
    if (width > 768){
    return (
-      <div>
+      <div class="box">
       <Navbar class="Nav"></Navbar>
       <div className="addMember-container">
           
@@ -42,7 +42,7 @@ export const AddMember = ({addMember}) => {
       </div>
    )} else {
       return (
-         <div>
+         <div class="box">
          <div className="addMember-container">
              
              <div class="div1">

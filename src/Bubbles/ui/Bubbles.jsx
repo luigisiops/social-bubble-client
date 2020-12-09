@@ -72,7 +72,7 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
         let width = window.innerWidth
         if (width > 768) {
             return (
-                <div>
+                <div class="box">
                     <Navbar />
                     <div className="bubbles-container">
                         {bubble.bubbleList.map(item => {
@@ -103,7 +103,10 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
                             <div className="user-posts">
                                 <Comment.Group>
                                     <Comment>
+<<<<<<< HEAD
                                         <Comment.Avatar as='a' src='stock-profile.png' />
+=======
+>>>>>>> a54869e539b4e5cdc30c7aabacaf9362f6cf8be0
                                         <Comment.Content>
                                             <Comment.Author>{post.Post.User.first_name + " " + post.Post.User.last_name}</Comment.Author>
                                             <Comment.Metadata>
@@ -111,7 +114,11 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
                                                     <Moment fromNow>{post.Post.createdAt}</Moment>
                                                 </div>
                                                 <div>
+<<<<<<< HEAD
                                                 <Icon onClick = {() => deleteBubblePost(post.PostId)} name='trash'></Icon>
+=======
+                                                    
+>>>>>>> a54869e539b4e5cdc30c7aabacaf9362f6cf8be0
                         </div>
                                             </Comment.Metadata>
                                             <Comment.Text>
@@ -132,7 +139,7 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
             )
         } else {
             return (
-                <div>
+                <div class="box">
                     <div className="bubbles-container">
                         {bubble.bubbleList.map(item => {
                             if (bubbleId === item.id) {
@@ -162,7 +169,10 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
 
                                 <Comment.Group>
                                     <Comment>
+<<<<<<< HEAD
                                         <Comment.Avatar as='a' src='stock-profile.png' />
+=======
+>>>>>>> a54869e539b4e5cdc30c7aabacaf9362f6cf8be0
                                         <Comment.Content>
                                             <Comment.Author>{post.Post.User.first_name + " " + post.Post.User.last_name}</Comment.Author>
                                             <Comment.Metadata>
@@ -170,7 +180,11 @@ export const Bubbles = ({ getPosts, getBubbleUsers, deleteBubble, addBubblePost,
                                                     <Moment fromNow>{post.Post.createdAt}</Moment>
                                                 </div>
                                                 <div>
+<<<<<<< HEAD
                                                 <Icon onClick = {() => deleteBubblePost(post.PostId)} name='trash'></Icon>
+=======
+                                                    
+>>>>>>> a54869e539b4e5cdc30c7aabacaf9362f6cf8be0
                         </div>
                                             </Comment.Metadata>
                                             <Comment.Text>

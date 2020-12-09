@@ -6,6 +6,7 @@
     margin-bottom: 20px;
 }
 
+<<<<<<< HEAD
 .bubble-status-green{
     font-size: 16px;
     color: green
@@ -19,4 +20,12 @@
 .bubble-status-red{
     font-size: 16px;
     color: red
+=======
+#root{
+    height:100%
+}
+
+.box{
+    height:100%
+>>>>>>> a54869e539b4e5cdc30c7aabacaf9362f6cf8be0
 }
