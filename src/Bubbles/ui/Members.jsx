@@ -4,6 +4,7 @@ import {connect} from "react-redux"
 import {GetBubbleUsers} from '../use-cases/getBubbleUsers'
 import { Button, Card, Image } from 'semantic-ui-react'
 import Nav from "../../Login/ui/nav"
+import Navbar from '../../Navbar/Navbar'
 
 
 
@@ -22,11 +23,11 @@ export const Members = ({getBubbleUsers, bubbleUsers}) => {
     else{
         return (
             <div className="bubbles-container">
-                <Nav/>
+                <Navbar />
                 <h1 className="bubble-title">Family</h1>
                 <div className="toggle">
-                <Link to = {`/bubbles/${bubbleId}}`}><Button className="links" primary color='blue'>Activities</Button> </Link>
-                <Link to ={`/members/${bubbleId}}`}><Button className="links" primary color='blue'>Members</Button></Link>
+                <Link to = {`/bubbles/${bubbleId}}`}><Button className="links" primary >Activities</Button> </Link>
+                <Link to ={`/members/${bubbleId}}`}><Button className="links" primary >Members</Button></Link>
     
                 </div>
                 <div className="bubble-status">This bubble is at risk!</div>      
@@ -54,7 +55,7 @@ export const Members = ({getBubbleUsers, bubbleUsers}) => {
       </Card.Content>
     </Card></div>
                 ))}
-        <Link to ={`/members/${bubbleId}}/add-member`}><Button className="links" basic color='blue'>Add Member</Button></Link>
+        <Link to ={`/members/${bubbleId}}/add-member`}><Button className="links" positive>Add Member</Button></Link>
             </div>
         )
     }
