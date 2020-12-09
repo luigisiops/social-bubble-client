@@ -11,6 +11,10 @@ import {
    // onleaveBubble,
 } from "./actions"
 
+import {
+   onUpdateUserStatus,
+}from "../../Bubbles/framework/actions"
+
 // const initialState = {
 //    isAuthenticated: false
    // user: {
@@ -40,6 +44,11 @@ export const loginReducer = createReducer(
       },
       [onGetLoggedUser.type]: (state, {payload: user}) =>{
          return {...state, user}
+      },
+      [onUpdateUserStatus.type] : (state, {payload: user_status}) => {
+         return {...state, user:{
+            ...state.user, user_status: user_status
+         }}
       }
    }
 )

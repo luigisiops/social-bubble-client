@@ -2,31 +2,12 @@ import { createReducer } from "@reduxjs/toolkit"
 
 import {
     onGetBubblePosts,
+    onAddBubblePost,    
     onGetBubbles,
     onGetBubbleUsers,
     onAddBubbles,
     onDeleteBubble,
-    onUpdateUserStatus,
 } from "./actions"
-
-export const user = createReducer(
-    {
-        user: {
-            id: 1,
-            firstName: "John",
-            lastName: "Smith",
-            email: "johnsmith@email.com",
-            password: "password",
-            user_status:"green"
-         }
-    },
-
-    {
-        [onUpdateUserStatus.type] : (state, {payload: user}) => {
-            return {...state, user}
-        }
-    },
-)
 
 export const bubble = createReducer(
     {
@@ -44,6 +25,17 @@ export const bubble = createReducer(
         [onGetBubbles.type]: (state, { payload: bubbleList }) => {
             return { ...state, bubbleList }
         },
+
+        [onDeleteBubble.type] : (state, {payload: bubbleId}) => {
+            let arr = state.bubbleList
+            let bubbleList = []
+            arr.forEach((element) => {
+                if (element.id !== bubbleId){
+                    bubbleList.push(element)
+                }
+            })
+            return { ...state, bubbleList}
+        }
 
     }
 )
@@ -64,13 +56,17 @@ export const bubblePosts = createReducer(
     {
         posts: [],
     },
-
     {
         [onGetBubblePosts.type]: (state, { payload: posts }) => {
             return { ...state, posts }
         },
+        [onAddBubblePost.type]: (state, {payload: post}) =>{
+            return { ...state, posts:[
+                ...state.posts, post
+            ]}
+        }
 
     }
 )
 
-export default { bubblePosts, bubble, bubbleUsers, user }
+export default { bubblePosts, bubble, bubbleUsers }

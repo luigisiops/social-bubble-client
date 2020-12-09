@@ -1,21 +1,19 @@
-import {onAddBubbles} from '../framework/actions'
+import {onDeleteBubble} from '../framework/actions'
 
 export const DeleteBubble = (dispatch) => async(
     bubbleId
 ) => {
     
-    const bubble = {id: bubbleId}
 
-    const response = await fetch('http://localhost:8080/bubble/delete-bubble',{
+    const response = await fetch(`http://localhost:8080/bubble/${bubbleId}/delete-bubble`,{
         method: 'DELETE', 
         headers: {
           'Content-Type': 'application/json'
         }, 
-        body: JSON.stringify(bubble)
     })
     
-    //let bubble = await response.json()
-    return dispatch(onAddBubbles(test))
+    let bubbleResponse = await response.json()
+    return dispatch(onDeleteBubble(bubbleId))
 
   }
 export default DeleteBubble

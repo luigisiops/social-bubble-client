@@ -1,36 +1,23 @@
 import {onUpdateUserStatus} from '../framework/actions'
 
 export const UpdateUserStatus = (dispatch) => async(
-    user
+    userId, userStatus
 ) => {
 
-    const userStatus = {user_status: user}
+    const status = {user_status: userStatus}
 
-    /*const reponse = await fetch (`http://localhost:8080/`, {
+    const response = await fetch (`http://localhost:8080/user/${userId}/status`, {
         method:'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
-        body:{
-            user_status: user
-        }
-    })*/
+        body: JSON.stringify(status)        
+    })
 
-    //let status = await response.json()
+    let statusResponse = await response.json()
 
-    return dispatch(onUpdateUserStatus({
-        id: 1,
-        firstName: "John",
-        lastName: "Smith",
-        email: "johnsmith@email.com",
-        password: "password",
-        user_status: user
-    }))
-
-
-
-
-
-
+    return dispatch(onUpdateUserStatus(statusResponse.user_status))
 
 }
+
+export default UpdateUserStatus
