@@ -23,7 +23,8 @@ Most of our team members are quite new to development, especially considering we
 
 ## Screenshots
 ![landingPage](https://user-images.githubusercontent.com/49554888/102964101-b67ee800-44e2-11eb-88a1-675d3d2eabf8.png)
-
+<br>
+![loginPageLightMode](https://user-images.githubusercontent.com/49554888/102964191-eded9480-44e2-11eb-8611-27f6b5d0efe4.png)
 
 ## What's next for Social Bubble
 At the moment, all the bubbles are part of one network which we designed with Covid-19 in mind. In the future, we would like to have the ability to add networks for other purposes.
