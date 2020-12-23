@@ -24,6 +24,13 @@ Most of our team members are quite new to development, especially considering we
 ## Screenshots
 ![loginPageLightMode](https://user-images.githubusercontent.com/49554888/102964191-eded9480-44e2-11eb-8611-27f6b5d0efe4.png)
 ![lightmodeLogin](https://user-images.githubusercontent.com/49554888/102964340-491f8700-44e3-11eb-8966-c5a7da5133ee.png)
+![register](https://user-images.githubusercontent.com/49554888/102964445-97348a80-44e3-11eb-95e3-7bad6d50913f.png)
+![riskbuble](https://user-images.githubusercontent.com/49554888/102964579-eed2f600-44e3-11eb-817f-4c871e2a4f3b.png)
+![risk](https://user-images.githubusercontent.com/49554888/102964593-f2667d00-44e3-11eb-9b5b-5a9efd8509f8.png)
+![infectedbubble](https://user-images.githubusercontent.com/49554888/102964604-f8f4f480-44e3-11eb-8199-29af96e94fa1.png)
+![home](https://user-images.githubusercontent.com/49554888/102964673-145fff80-44e4-11eb-8cd5-7391b2d70f0d.png)
+![covidPagntation](https://user-images.githubusercontent.com/49554888/102964765-4f623300-44e4-11eb-92de-2dcd3fbeaf86.png)
+![allclear](https://user-images.githubusercontent.com/49554888/102964769-538e5080-44e4-11eb-80e6-2955b61c81ef.png)
 
 ## What's next for Social Bubble
 At the moment, all the bubbles are part of one network which we designed with Covid-19 in mind. In the future, we would like to have the ability to add networks for other purposes.
