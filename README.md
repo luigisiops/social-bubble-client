@@ -22,9 +22,8 @@ You can also:
 Most of our team members are quite new to development, especially considering we met in a full-stack bootcamp. One of the last things we have learned in our bootcamp is using React and Redux to build our frontend. It was difficult managing state and a single page system, but we bonded as a team and got over the challenges.
 
 ## Screenshots
-![landingPage](https://user-images.githubusercontent.com/49554888/102964101-b67ee800-44e2-11eb-88a1-675d3d2eabf8.png)
-<br>
 ![loginPageLightMode](https://user-images.githubusercontent.com/49554888/102964191-eded9480-44e2-11eb-8611-27f6b5d0efe4.png)
+![lightmodeLogin](https://user-images.githubusercontent.com/49554888/102964340-491f8700-44e3-11eb-8966-c5a7da5133ee.png)
 
 ## What's next for Social Bubble
 At the moment, all the bubbles are part of one network which we designed with Covid-19 in mind. In the future, we would like to have the ability to add networks for other purposes.
